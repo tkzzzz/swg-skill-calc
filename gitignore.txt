@@ -78,7 +78,7 @@ venv/
 *.7z
 
 # Custom
-/archice/
+/archive/
 /temp/
 /private/
 /sandbox/
