@@ -1,0 +1,86 @@
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# IDE and Editor Files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+
+# Dependency Directories
+node_modules/
+bower_components/
+
+# Build Output
+dist/
+build/
+*.log
+
+# Temporary Files
+*.tmp
+*.temp
+.cache/
+
+# Private Data Files
+# Don't commit actual game data files
+CONSTANTS.js
+constants.js
+*.constants.js
+data/private/
+data/actual/
+
+# Backup Files
+*.bak
+*.backup
+*.old
+
+# Local Environment
+.env
+.env.local
+.env.*.local
+
+# Debug Files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Test Coverage
+coverage/
+.nyc_output/
+
+# Documentation Build
+docs/_build/
+docs/.doctrees/
+
+# Python (if using any Python scripts)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+
+# Archives
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Custom
+/archice/
+/temp/
+/private/
+/sandbox/
+TODO.txt
+NOTES.txt
