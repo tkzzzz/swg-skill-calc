@@ -1,0 +1,23 @@
+{
+  "serverName": "Default SWG Configuration",
+  "description": "Base Star Wars Galaxies skill calculator settings",
+  "version": "1.0.0",
+  "settings": {
+    "maxSkillPoints": 250,
+    "maxProfessions": null,
+    "experienceMultiplier": 1,
+    "enableAllProfessions": true,
+    "enableAllSpecies": true
+  },
+  "skillOverrides": {},
+  "professionOverrides": {},
+  "customization": {
+    "title": "SWG Skill Calculator",
+    "theme": "classic",
+    "features": {
+      "saveBuilds": true,
+      "exportBuilds": true,
+      "shareBuilds": false
+    }
+  }
+}

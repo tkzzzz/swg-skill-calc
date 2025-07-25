@@ -1,0 +1,13 @@
+{
+  "extractionDate": "2025-07-25T11:16:54.051Z",
+  "sourceFile": "archive/CONSTANTS.js",
+  "professionCount": 52,
+  "skillCount": 767,
+  "speciesCount": 10,
+  "filesCreated": [
+    "data/base-game/professions.json",
+    "data/base-game/skills.json",
+    "data/base-game/species.json",
+    "data/server-configs/default.json"
+  ]
+}

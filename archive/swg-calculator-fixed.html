@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SWG Skill Calculator - Kodan's Style</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tahoma', Arial, sans-serif;
+            background: #1a1a1a;
+            color: #ffffff;
+            min-height: 100vh;
+            font-size: 12px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 330px 1fr 350px;
+            grid-template-rows: auto 1fr;
+            height: 100vh;
+            gap: 2px;
+            background: #000;
+            padding: 2px;
+        }
+
+        .header {
+            grid-column: span 3;
+            background: #295252;
+            padding: 8px;
+            border: 2px solid #397373;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .file-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .file-controls label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .file-controls input[type="checkbox"] {
+            cursor: pointer;
+        }
+
+        .btn {
+            background: #397373;
+            border: 1px solid #4a8a8a;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 11px;
+            font-family: Tahoma;
+        }
+
+        .btn:hover {
+            background: #4a8a8a;
+        }
+
+        .data-status {
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 3px;
+            background: #f44336;
+        }
+
+        .data-status.loaded {
+            background: #4caf50;
+        }
+
+        .left-panel {
+            background: #295252;
+            border: 2px solid #397373;
+            border-radius: 8px;
+            padding: 8px;
+            overflow-y: auto;
+        }
+
+        .profession-categories {
+            margin-bottom: 15px;
+        }
+
+        .category-header {
+            background: #397373;
+            color: #ffffff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-align: center;
+            border: 1px solid #4a8a8a;
+        }
+
+        .profession-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+            gap: 3px;
+            margin-bottom: 10px;
+        }
+
+        .profession-btn {
+            background: #397373;
+            border: 1px solid #4a8a8a;
+            color: white;
+            padding: 6px 4px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 10px;
+            text-align: center;
+            transition: all 0.2s;
+            font-family: Tahoma;
+        }
+
+        .profession-btn:hover {
+            background: #4a8a8a;
+        }
+
+        .profession-btn.selected {
+            background: #BDA82C;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .profession-btn.active {
+            background: #E5C841;
+            color: #000;
+            font-weight: bold;
+            border: 2px solid #BDA82C;
+        }
+
+        .species-section {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #397373;
+        }
+
+        .center-panel {
+            background: #295252;
+            border: 2px solid #397373;
+            border-radius: 8px;
+            padding: 15px;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .profession-title {
+            color: #ffff00;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px #000;
+        }
+
+        .skill-tree {
+            display: grid;
+            grid-template-rows: auto auto auto auto auto auto;
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .skill-row {
+            display: grid;
+            justify-items: center;
+        }
+
+        .master-row {
+            grid-template-columns: 1fr auto 1fr;
+        }
+
+        .branch-row {
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .novice-row {
+            grid-template-columns: 1fr auto 1fr;
+        }
+
+        .skill-box {
+            background: #397373;
+            border: 2px solid #4a8a8a;
+            border-radius: 5px;
+            padding: 8px;
+            min-width: 120px;
+            min-height: 50px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+            font-size: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .skill-box:hover {
+            background: #4a8a8a;
+            border-color: #5a9a9a;
+        }
+
+        .skill-box.selected {
+            background: #BDA82C;
+            color: #000;
+            border-color: #E5C841;
+            font-weight: bold;
+        }
+
+        .skill-box.disabled {
+            background: #2a3a3a;
+            color: #666;
+            cursor: not-allowed;
+            border-color: #333;
+        }
+
+        .skill-name {
+            font-weight: bold;
+            line-height: 1.2;
+        }
+
+        .skill-subtitle {
+            font-size: 9px;
+            margin-top: 2px;
+            opacity: 0.9;
+        }
+
+        .skill-cost {
+            position: absolute;
+            top: 2px;
+            right: 4px;
+            font-size: 8px;
+            color: #ffff00;
+            font-weight: bold;
+        }
+
+        .empty-skill {
+            background: transparent;
+            border: none;
+            cursor: default;
+        }
+
+        .branch-header {
+            color: #00ffff;
+            font-size: 11px;
+            text-align: center;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .connection-line {
+            width: 2px;
+            background: #397373;
+            height: 15px;
+            margin: 0 auto;
+        }
+
+        .right-panel {
+            background: #295252;
+            border: 2px solid #397373;
+            border-radius: 8px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .skill-points-section {
+            background: #397373;
+            border-radius: 5px;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .skill-points-display {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .skill-points-bar {
+            height: 8px;
+            background: #333;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 5px;
+        }
+
+        .skill-points-fill {
+            height: 100%;
+            transition: all 0.3s;
+            border-radius: 4px;
+        }
+
+        .controls-section {
+            background: #397373;
+            border-radius: 5px;
+            padding: 8px;
+        }
+
+        .controls-title {
+            color: #00ffff;
+            font-size: 11px;
+            text-align: center;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .controls-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 5px;
+        }
+
+        .debug-controls {
+            margin-top: 5px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 5px;
+        }
+
+        .accumulated-data {
+            flex: 1;
+            background: #397373;
+            border-radius: 5px;
+            padding: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .accumulated-title {
+            color: #00ffff;
+            font-size: 11px;
+            text-align: center;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .data-content {
+            flex: 1;
+            overflow-y: auto;
+            font-size: 10px;
+            line-height: 1.3;
+        }
+
+        .data-section {
+            margin-bottom: 10px;
+        }
+
+        .data-section-title {
+            color: #00ffff;
+            font-weight: bold;
+            border-bottom: 1px solid #4a8a8a;
+            padding-bottom: 2px;
+            margin-bottom: 5px;
+        }
+
+        .data-list {
+            color: #ffffff;
+        }
+
+        .data-list div {
+            margin-bottom: 1px;
+        }
+
+        .scroll-hint {
+            color: #ffff00;
+            font-size: 9px;
+            text-align: center;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        .no-profession {
+            text-align: center;
+            color: #888;
+            font-style: italic;
+            margin-top: 50px;
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #295252;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #397373;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4a8a8a;
+        }
+
+        @media (max-width: 1200px) {
+            .container {
+                grid-template-columns: 280px 1fr 300px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto auto;
+                height: auto;
+            }
+            
+            .right-panel {
+                order: 3;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌟 SWG Skill Calculator</h1>
+            <div class="file-controls">
+                <label class="btn" for="dataFileInput">Load CONSTANTS.js</label>
+                <input type="file" id="dataFileInput" accept=".js,.txt" style="display: none;" onchange="loadDataFile(event)">
+                <label style="margin-left: 10px; font-size: 11px;">
+                    <input type="checkbox" id="cleanDataCheckbox" checked> Clean data on load
+                </label>
+                <div id="dataStatus" class="data-status">Sample Data Only</div>
+            </div>
+        </div>
+
+        <div class="left-panel">
+            <div class="profession-categories">
+                <div class="category-header">Basic Professions</div>
+                <div class="profession-list" id="basicProfessions">
+                    <!-- Basic professions populated by JavaScript -->
+                </div>
+
+                <div class="category-header">Elite and Hybrid Professions</div>
+                <div class="profession-list" id="eliteProfessions">
+                    <!-- Elite professions populated by JavaScript -->
+                </div>
+
+                <div class="category-header">Force Sensitive</div>
+                <div class="profession-list" id="forceSensitiveProfessions">
+                    <!-- Force Sensitive professions populated by JavaScript -->
+                </div>
+
+                <div class="category-header">Force Discipline</div>
+                <div class="profession-list" id="jediProfessions">
+                    <!-- Jedi professions populated by JavaScript -->
+                </div>
+            </div>
+
+            <div class="species-section">
+                <div class="category-header">Species</div>
+                <select id="speciesSelect" class="btn" style="width: 100%; margin-top: 5px;">
+                    <option value="">Select Species</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="center-panel">
+            <div id="skillTreeContainer">
+                <div class="no-profession">
+                    <p>Select a profession to view its skill tree</p>
+                    <p style="margin-top: 10px; font-size: 10px;">Load your CONSTANTS.js file to see all professions and skills</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-panel">
+            <div class="skill-points-section">
+                <div class="skill-points-display">
+                    Skill Points Remaining: <span id="remainingPoints">250</span>/250
+                </div>
+                <div class="skill-points-bar">
+                    <div id="skillPointsFill" class="skill-points-fill"></div>
+                </div>
+                <div id="overloadIndicator" style="color: #ff0000; font-size: 10px; display: none;">Overloaded</div>
+            </div>
+
+            <div class="controls-section">
+                <div class="controls-title">Controls</div>
+                <div class="controls-grid">
+                    <button class="btn" onclick="resetBuild()">Reset</button>
+                    <button class="btn" onclick="loadBuild()">Load</button>
+                    <button class="btn" onclick="saveBuild()">Save</button>
+                    <button class="btn" onclick="exportBuild()">Export</button>
+                </div>
+                <div class="debug-controls">
+                    <button class="btn" onclick="forceRefresh()" style="background: #ff6b6b;">🔄 Force Refresh</button>
+                    <button class="btn" onclick="debugAbilities()" style="background: #ff9800;">🐛 Debug Abilities</button>
+                    <button class="btn" onclick="showRawData()" style="background: #2196F3;">📊 Show Raw Data</button>
+                </div>
+                <button class="btn" onclick="manualCleanData()" style="background: #4CAF50; width: 100%; margin-top: 5px;">🧹 Manual Clean Numbers</button>
+            </div>
+
+            <div class="accumulated-data">
+                <div class="accumulated-title">Accumulated Skill Data</div>
+                <div class="data-content" id="accumulatedData">
+                    <div style="text-align: center; color: #888; font-style: italic; margin-top: 20px;">
+                        Select skills to see accumulated data
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data will be loaded from CONSTANTS.js file
+        let PROFESSIONS = {
+            basic: ["Artisan", "Brawler", "Entertainer", "Marksman", "Medic", "Scout", "Politician"],
+            elite: ["Architect", "Armorsmith", "Bio-Engineer", "Bounty Hunter", "Combat Medic", "Carbineer", "Chef", "Creature Handler", "Commando", "Dancer", "Doctor", "Droid Engineer", "Fencer", "Image Designer", "Merchant", "Musician", "Pikeman", "Pistoleer", "Ranger", "Rifleman", "Smuggler", "Squad Leader", "Swordsman", "Tailor", "Teras Kasi Artist", "Weaponsmith"],
+            forceSensitive: ["Combat Prowess", "Enhanced Reflexes", "Crafting Mastery", "Heightened Senses"],
+            jedi: ["Lightsaber", "Powers", "Healing", "Enchancements", "Defender"]
+        };
+
+        let ALL_PROFESSIONS = {};
+        let SKILLS = {};
+        let SKILL_MOD = {};
+        let ALL_SKILLS_WHICH_PROFESSION = {};
+        let SKILL_TITLE = {};
+        let ALL_SPECIES = ['bothan', 'human', 'ithorian', 'mon_calamari', 'rodian', 'sullustan', 'trandoshan', 'twilek', 'wookiee', 'zabrak'];
+
+        // Application state
+        let selectedSkills = new Set();
+        let selectedProfessions = new Set();
+        let currentViewProfession = '';
+        let totalSkillPoints = 250;
+        let dataLoaded = false;
+
+        // Sample data for demo
+        const SAMPLE_DATA = {
+            social_entertainer: {
+                master_links: [],
+                master: "social_entertainer_master",
+                branch_1: {
+                    links: ["social_imagedesigner"],
+                    skills: ["social_entertainer_hairstyle_01", "social_entertainer_hairstyle_02", "social_entertainer_hairstyle_03", "social_entertainer_hairstyle_04"]
+                },
+                branch_2: {
+                    links: ["social_musician"],
+                    skills: ["social_entertainer_music_01", "social_entertainer_music_02", "social_entertainer_music_03", "social_entertainer_music_04"]
+                },
+                branch_3: {
+                    links: ["social_dancer"],
+                    skills: ["social_entertainer_dance_01", "social_entertainer_dance_02", "social_entertainer_dance_03", "social_entertainer_dance_04"]
+                },
+                branch_4: {
+                    links: ["social_musician", "social_dancer"],
+                    skills: ["social_entertainer_healing_01", "social_entertainer_healing_02", "social_entertainer_healing_03", "social_entertainer_healing_04"]
+                },
+                novice: "social_entertainer_novice",
+                novice_links: [""]
+            }
+        };
+
+        const SAMPLE_SKILLS = {
+            social_entertainer_novice: {
+                title: "Novice Entertainer",
+                skillPoints: 15,
+                preReqs: [""],
+                xp: { id: "", cost: 0 },
+                skillModifiers: { healing_dance_wound: 5, healing_music_wound: 5 }
+            },
+            social_entertainer_master: {
+                title: "Master Entertainer",
+                skillPoints: 6,
+                preReqs: ["social_entertainer_hairstyle_04", "social_entertainer_music_04", "social_entertainer_dance_04", "social_entertainer_healing_04"],
+                xp: { id: "", cost: 0 },
+                skillModifiers: { healing_dance_ability: 10, healing_music_ability: 10 }
+            },
+            social_entertainer_hairstyle_04: {
+                title: "Hairstylist",
+                skillPoints: 5,
+                preReqs: ["social_entertainer_hairstyle_03"],
+                xp: { id: "imagedesigner", cost: 15000 },
+                skillModifiers: { hair: 1, face: 1 }
+            }
+        };
+
+        // File loading function
+        async function loadDataFile(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            try {
+                const text = await file.text();
+                const cleanedCount = parseConstantsFile(text);
+                updateDataStatus(true, cleanedCount);
+                initializeProfessionButtons();
+                if (currentViewProfession) {
+                    renderSkillTree(currentViewProfession);
+                }
+            } catch (error) {
+                console.error('Error loading file:', error);
+                alert('Error loading file. Please check the file format.');
+                updateDataStatus(false);
+            }
+        }
+
+        // Parse the CONSTANTS.js file
+        function parseConstantsFile(text) {
+            let cleanedCount = 0;  // Declare at function scope
+            
+            try {
+                let cleanText = text.replace(/export\s+const\s+/g, 'window.');
+                const script = document.createElement('script');
+                script.textContent = cleanText;
+                document.head.appendChild(script);
+                
+                if (window.PROFESSIONS) PROFESSIONS = window.PROFESSIONS;
+                if (window.ALL_PROFESSIONS) ALL_PROFESSIONS = window.ALL_PROFESSIONS;
+                if (window.SKILLS) {
+                    SKILLS = window.SKILLS;
+                    
+                    // Check if data cleaning is enabled
+                    const shouldClean = document.getElementById('cleanDataCheckbox').checked;
+                    
+                    if (shouldClean) {
+                        // CLEAN SKILL DATA - Remove only specific problematic entries
+                        console.log('🧹 Cleaning skill data...');
+                        
+                        // Specific entries to remove - based on your screenshot showing 1,2,3,4
+                        const badEntries = ['1', '2', '3', '4'];
+                        
+                        Object.entries(SKILLS).forEach(([skillId, skill]) => {
+                            if (skill.commands && Array.isArray(skill.commands)) {
+                                const originalLength = skill.commands.length;
+                                const originalCommands = [...skill.commands]; // Keep original for logging
+                                
+                                // Filter out only the specific bad entries
+                                skill.commands = skill.commands.filter(cmd => {
+                                    if (!cmd) return false;
+                                    const cmdStr = String(cmd).trim();
+                                    
+                                    // Only remove if it's exactly one of our bad entries
+                                    if (badEntries.includes(cmdStr)) {
+                                        cleanedCount++;
+                                        return false;
+                                    }
+                                    
+                                    // Keep everything else
+                                    return true;
+                                });
+                                
+                                if (skill.commands.length < originalLength) {
+                                    console.log(`Cleaned ${skillId}: [${originalCommands.join(', ')}] → [${skill.commands.join(', ')}]`);
+                                }
+                            }
+                        });
+                        
+                        console.log(`✅ Data cleaning complete. Removed ${cleanedCount} instances of "1", "2", "3", or "4" from abilities.`);
+                    } else {
+                        console.log('⚠️ Data cleaning disabled - loading raw data');
+                    }
+                }
+                
+                if (window.SKILL_MOD) SKILL_MOD = window.SKILL_MOD;
+                if (window.ALL_SKILLS_WHICH_PROFESSION) ALL_SKILLS_WHICH_PROFESSION = window.ALL_SKILLS_WHICH_PROFESSION;
+                if (window.SKILL_TITLE) SKILL_TITLE = window.SKILL_TITLE;
+                if (window.ALL_SPECIES) ALL_SPECIES = window.ALL_SPECIES;
+                
+                document.head.removeChild(script);
+                dataLoaded = true;
+                console.log('Data loaded successfully');
+                
+                return cleanedCount;
+                
+            } catch (error) {
+                console.error('Error parsing constants file:', error);
+                throw error;
+            }
+        }
+
+        // Update data status indicator
+        function updateDataStatus(loaded, cleanedCount = 0) {
+            const status = document.getElementById('dataStatus');
+            if (loaded) {
+                let statusText = `✅ Full Data Loaded (${Object.keys(SKILLS).length} skills)`;
+                if (cleanedCount > 0) {
+                    statusText += ` - Cleaned ${cleanedCount} entries`;
+                }
+                status.textContent = statusText;
+                status.classList.add('loaded');
+            } else {
+                status.textContent = '❌ Sample Data Only';
+                status.classList.remove('loaded');
+            }
+        }
+
+        // Initialize profession buttons
+        function initializeProfessionButtons() {
+            const categories = [
+                { id: 'basicProfessions', professions: PROFESSIONS.basic },
+                { id: 'eliteProfessions', professions: PROFESSIONS.elite },
+                { id: 'forceSensitiveProfessions', professions: PROFESSIONS.forceSensitive },
+                { id: 'jediProfessions', professions: PROFESSIONS.jedi }
+            ];
+
+            categories.forEach(category => {
+                const container = document.getElementById(category.id);
+                container.innerHTML = '';
+                
+                category.professions.forEach(profession => {
+                    const button = document.createElement('div');
+                    button.className = 'profession-btn';
+                    button.textContent = profession;
+                    button.onclick = () => selectProfession(profession);
+                    container.appendChild(button);
+                });
+            });
+
+            // Initialize species selector
+            const speciesSelect = document.getElementById('speciesSelect');
+            speciesSelect.innerHTML = '<option value="">Select Species</option>';
+            ALL_SPECIES.forEach(species => {
+                const option = document.createElement('option');
+                option.value = species;
+                option.textContent = species.charAt(0).toUpperCase() + species.slice(1).replace(/_/g, ' ');
+                speciesSelect.appendChild(option);
+            });
+        }
+
+        // Convert profession name to data key
+        function getProfessionKey(professionName) {
+            const professionMap = {
+                'Entertainer': 'social_entertainer',
+                'Dancer': 'social_dancer',
+                'Musician': 'social_musician',
+                'Image Designer': 'social_imagedesigner',
+                'Artisan': 'crafting_artisan',
+                'Architect': 'crafting_architect',
+                'Armorsmith': 'crafting_armorsmith',
+                'Weaponsmith': 'crafting_weaponsmith',
+                'Chef': 'crafting_chef',
+                'Tailor': 'crafting_tailor',
+                'Droid Engineer': 'crafting_droidengineer',
+                'Bio-Engineer': 'science_bioengineer',
+                'Combat Medic': 'science_combatmedic',
+                'Doctor': 'science_doctor',
+                'Medic': 'science_medic',
+                'Brawler': 'combat_brawler',
+                'Marksman': 'combat_marksman',
+                'Scout': 'outdoors_scout',
+                'Ranger': 'outdoors_ranger',
+                'Creature Handler': 'outdoors_creaturehandler',
+                'Bounty Hunter': 'combat_bountyhunter',
+                'Commando': 'combat_commando',
+                'Carbineer': 'combat_carbineer',
+                'Pistoleer': 'combat_pistoleer',
+                'Rifleman': 'combat_rifleman',
+                'Fencer': 'combat_fencer',
+                'Swordsman': 'combat_swordsman',
+                'Pikeman': 'combat_pikeman',
+                'Teras Kasi Artist': 'combat_teraskasiartist',
+                'Squad Leader': 'combat_squadleader',
+                'Smuggler': 'combat_smuggler',
+                'Politician': 'social_politician',
+                'Merchant': 'social_merchant'
+            };
+            
+            return professionMap[professionName] || professionName.toLowerCase().replace(/[^a-z]/g, '');
+        }
+
+        // Select profession
+        function selectProfession(professionName) {
+            currentViewProfession = professionName;
+            
+            // Update button states
+            document.querySelectorAll('.profession-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (selectedProfessions.has(btn.textContent)) {
+                    btn.classList.add('selected');
+                } else {
+                    btn.classList.remove('selected');
+                }
+            });
+
+            // Set active button
+            event.target.classList.add('active');
+            
+            renderSkillTree(professionName);
+        }
+
+        // Render skill tree for a profession
+        function renderSkillTree(professionName) {
+            const container = document.getElementById('skillTreeContainer');
+            const professionKey = getProfessionKey(professionName);
+            
+            // Use sample data if full data not loaded
+            const professionData = dataLoaded ? ALL_PROFESSIONS[professionKey] : SAMPLE_DATA[professionKey];
+            
+            if (!professionData) {
+                container.innerHTML = `
+                    <div class="profession-title">${professionName}</div>
+                    <div class="no-profession">
+                        <p>Profession data not found: ${professionKey}</p>
+                        <p>Please load your CONSTANTS.js file</p>
+                    </div>
+                `;
+                return;
+            }
+
+            let html = `<div class="profession-title">${professionName}</div>`;
+            html += '<div class="skill-tree">';
+
+            // Master skill
+            html += '<div class="skill-row master-row">';
+            html += '<div class="empty-skill"></div>';
+            if (professionData.master) {
+                html += renderSkillBox(professionData.master, "Master " + professionName, true);
+            }
+            html += '<div class="empty-skill"></div>';
+            html += '</div>';
+
+            // Connection line
+            html += '<div class="connection-line"></div>';
+
+            // Branch headers
+            const branchNames = getBranchNames(professionData);
+            html += '<div class="skill-row branch-row">';
+            branchNames.forEach(name => {
+                html += `<div class="branch-header">${name}</div>`;
+            });
+            html += '</div>';
+
+            // Branch skills (4 levels)
+            for (let level = 4; level >= 1; level--) {
+                html += '<div class="skill-row branch-row">';
+                for (let branch = 1; branch <= 4; branch++) {
+                    const branchData = professionData[`branch_${branch}`];
+                    if (branchData && branchData.skills && branchData.skills[level - 1]) {
+                        const skillId = branchData.skills[level - 1];
+                        html += renderSkillBox(skillId, `Level ${level}`, false, level);
+                    } else {
+                        html += '<div class="skill-box empty-skill"></div>';
+                    }
+                }
+                html += '</div>';
+            }
+
+            // Connection line
+            html += '<div class="connection-line"></div>';
+
+            // Novice skill
+            html += '<div class="skill-row novice-row">';
+            html += '<div class="empty-skill"></div>';
+            if (professionData.novice) {
+                html += renderSkillBox(professionData.novice, "Novice " + professionName, true);
+            }
+            html += '</div>';
+
+            // Prerequisite profession link
+            if (professionData.novice_links && professionData.novice_links[0] && professionData.novice_links[0] !== "") {
+                html += '<div class="skill-row novice-row">';
+                html += '<div class="empty-skill"></div>';
+                html += `<div class="skill-box" style="background: #00ffff; color: #000;">${professionData.novice_links[0]}</div>`;
+                html += '<div class="empty-skill"></div>';
+                html += '</div>';
+            }
+
+            html += '</div>';
+            container.innerHTML = html;
+        }
+
+        // Get branch names for a profession
+        function getBranchNames(professionData) {
+            const names = [];
+            for (let i = 1; i <= 4; i++) {
+                const branch = professionData[`branch_${i}`];
+                if (branch && branch.links && branch.links.length > 0) {
+                    names.push(branch.links[0] || `Branch ${i}`);
+                } else {
+                    names.push(`Branch ${i}`);
+                }
+            }
+            return names;
+        }
+
+        // Render individual skill box
+        function renderSkillBox(skillId, fallbackTitle, isMajor = false, level = null) {
+            const skillData = dataLoaded ? SKILLS[skillId] : SAMPLE_SKILLS[skillId];
+            const isSelected = selectedSkills.has(skillId);
+            
+            if (!skillData) {
+                return `<div class="skill-box disabled">
+                    <div class="skill-name">${fallbackTitle}</div>
+                    <div class="skill-subtitle">Data not found</div>
+                </div>`;
+            }
+
+            const canAfford = getRemainingPoints() >= skillData.skillPoints;
+            const prereqsMet = checkPrerequisites(skillData.preReqs);
+            const isDisabled = !canAfford || !prereqsMet;
+            
+            const title = skillData.title || (dataLoaded ? SKILL_TITLE[skillId] : '') || fallbackTitle;
+            const displayTitle = title.replace(/^(Novice|Master)\s+/, '');
+            
+            let subtitle = '';
+            if (level && !isMajor) {
+                subtitle = title !== fallbackTitle ? title : '';
+            }
+
+            const classes = ['skill-box'];
+            if (isSelected) classes.push('selected');
+            if (isDisabled && !isSelected) classes.push('disabled');
+
+            return `
+                <div class="${classes.join(' ')}" onclick="toggleSkill('${skillId}')" title="${skillId}">
+                    <div class="skill-cost">${skillData.skillPoints}</div>
+                    <div class="skill-name">${isMajor ? title : (level ? `${displayTitle} ${getRomanNumeral(level)}` : displayTitle)}</div>
+                    ${subtitle ? `<div class="skill-subtitle">${subtitle}</div>` : ''}
+                </div>
+            `;
+        }
+
+        // Convert number to Roman numeral
+        function getRomanNumeral(num) {
+            const numerals = { 1: 'I', 2: 'II', 3: 'III', 4: 'IV' };
+            return numerals[num] || num.toString();
+        }
+
+        // Toggle skill selection
+        function toggleSkill(skillId) {
+            const skillData = dataLoaded ? SKILLS[skillId] : SAMPLE_SKILLS[skillId];
+            if (!skillData) return;
+
+            if (selectedSkills.has(skillId)) {
+                removeSkillAndDependents(skillId);
+            } else {
+                if (checkPrerequisites(skillData.preReqs) && getRemainingPoints() >= skillData.skillPoints) {
+                    selectedSkills.add(skillId);
+                    // Auto-add profession to selected list
+                    if (currentViewProfession) {
+                        selectedProfessions.add(currentViewProfession);
+                        updateProfessionButtons();
+                    }
+                }
+            }
+
+            renderSkillTree(currentViewProfession);
+            updateAccumulatedData();
+            updateSkillPointsDisplay();
+        }
+
+        // Remove skill and dependents
+        function removeSkillAndDependents(skillId) {
+            selectedSkills.delete(skillId);
+            
+            const allSkills = dataLoaded ? SKILLS : SAMPLE_SKILLS;
+            const toRemove = [];
+            
+            selectedSkills.forEach(selectedSkillId => {
+                const skill = allSkills[selectedSkillId];
+                if (skill && skill.preReqs && skill.preReqs.includes(skillId)) {
+                    toRemove.push(selectedSkillId);
+                }
+            });
+            
+            toRemove.forEach(dependentId => {
+                removeSkillAndDependents(dependentId);
+            });
+        }
+
+        // Check prerequisites
+        function checkPrerequisites(preReqs) {
+            if (!preReqs || preReqs.length === 0 || preReqs[0] === "") return true;
+            return preReqs.every(req => selectedSkills.has(req));
+        }
+
+        // Get remaining skill points
+        function getRemainingPoints() {
+            let used = 0;
+            const allSkills = dataLoaded ? SKILLS : SAMPLE_SKILLS;
+            
+            selectedSkills.forEach(skillId => {
+                const skill = allSkills[skillId];
+                if (skill) used += skill.skillPoints;
+            });
+            return totalSkillPoints - used;
+        }
+
+        // Update profession buttons
+        function updateProfessionButtons() {
+            document.querySelectorAll('.profession-btn').forEach(btn => {
+                if (selectedProfessions.has(btn.textContent)) {
+                    btn.classList.add('selected');
+                } else {
+                    btn.classList.remove('selected');
+                }
+            });
+        }
+
+        // Update skill points display
+        function updateSkillPointsDisplay() {
+            const remaining = getRemainingPoints();
+            const used = totalSkillPoints - remaining;
+            
+            document.getElementById('remainingPoints').textContent = remaining;
+            
+            const fill = document.getElementById('skillPointsFill');
+            const percentage = (used / totalSkillPoints) * 100;
+            fill.style.width = Math.min(percentage, 100) + '%';
+            
+            if (remaining < 0) {
+                fill.style.background = 'linear-gradient(90deg, #ff0000 0%, #ff4444 100%)';
+                document.getElementById('overloadIndicator').style.display = 'block';
+            } else if (remaining < 25) {
+                fill.style.background = 'linear-gradient(90deg, #ff9800 0%, #ffb74d 100%)';
+                document.getElementById('overloadIndicator').style.display = 'none';
+            } else {
+                fill.style.background = 'linear-gradient(90deg, #4caf50 0%, #66bb6a 100%)';
+                document.getElementById('overloadIndicator').style.display = 'none';
+            }
+        }
+
+        // ENHANCED ABILITIES FILTER - More targeted approach
+        function isValidAbility(ability) {
+            if (!ability) return false;
+            
+            // First check if it's even a string
+            if (typeof ability !== 'string') {
+                console.log('🚫 Not a string:', ability, 'Type:', typeof ability);
+                return false;
+            }
+            
+            const trimmed = ability.trim();
+            
+            // Specifically filter out "1", "2", "3", "4" (the exact problem from the screenshot)
+            const problematicNumbers = ['1', '2', '3', '4'];
+            if (problematicNumbers.includes(trimmed)) {
+                console.log('🚫 Filtered problematic number:', trimmed);
+                return false;
+            }
+            
+            // Too short (less than 2 meaningful characters)
+            if (trimmed.length < 2) {
+                console.log('🚫 Too short:', trimmed);
+                return false;
+            }
+            
+            // Only special characters
+            if (/^[^a-zA-Z0-9]+$/.test(trimmed)) {
+                console.log('🚫 Special chars only:', trimmed);
+                return false;
+            }
+            
+            // Empty or just spaces
+            if (trimmed === '' || /^\s+$/.test(trimmed)) {
+                console.log('🚫 Empty or spaces:', trimmed);
+                return false;
+            }
+            
+            // Passed all checks
+            return true;
+        }
+
+        // Debug function to analyze abilities
+        function debugAbilities() {
+            console.log('=== ABILITIES DEBUG START ===');
+            
+            const allSkills = dataLoaded ? SKILLS : SAMPLE_SKILLS;
+            let totalCommands = 0;
+            let numberCommands = 0;
+            let emptyArrays = 0;
+            const commandFrequency = {};
+            
+            // Analyze all selected skills
+            selectedSkills.forEach(skillId => {
+                const skill = allSkills[skillId];
+                if (skill && skill.commands) {
+                    console.log(`\n📋 Skill: ${skillId}`);
+                    console.log('Commands array:', JSON.stringify(skill.commands));
+                    
+                    if (skill.commands.length === 0) {
+                        emptyArrays++;
+                    }
+                    
+                    skill.commands.forEach((cmd, idx) => {
+                        totalCommands++;
+                        const cmdStr = String(cmd).trim();
+                        
+                        // Track frequency
+                        commandFrequency[cmdStr] = (commandFrequency[cmdStr] || 0) + 1;
+                        
+                        // Check if it's a number
+                        if (/^\d+$/.test(cmdStr)) {
+                            numberCommands++;
+                            console.log(`  ⚠️ [${idx}] Number found: "${cmdStr}"`);
+                        } else {
+                            console.log(`  ✅ [${idx}] Valid: "${cmdStr}"`);
+                        }
+                    });
+                }
+            });
+            
+            console.log('\n=== SUMMARY ===');
+            console.log('Total commands:', totalCommands);
+            console.log('Number commands:', numberCommands);
+            console.log('Empty command arrays:', emptyArrays);
+            
+            console.log('\n=== COMMAND FREQUENCY ===');
+            Object.entries(commandFrequency)
+                .sort(([,a], [,b]) => b - a)
+                .slice(0, 20)
+                .forEach(([cmd, count]) => {
+                    console.log(`"${cmd}": ${count} times`);
+                });
+            
+            console.log('=== ABILITIES DEBUG END ===');
+            
+            alert(`Debug complete! Check console for details.\n\nTotal: ${totalCommands}\nNumbers: ${numberCommands}\nEmpty arrays: ${emptyArrays}`);
+        }
+
+        // Update accumulated data with enhanced filtering
+        function updateAccumulatedData() {
+            const container = document.getElementById('accumulatedData');
+            
+            if (selectedSkills.size === 0) {
+                container.innerHTML = `
+                    <div style="text-align: center; color: #888; font-style: italic; margin-top: 20px;">
+                        Select skills to see accumulated data
+                    </div>
+                `;
+                return;
+            }
+
+            const allSkills = dataLoaded ? SKILLS : SAMPLE_SKILLS;
+            const experienceData = {};
+            const skillModData = {};
+            const abilitiesData = new Set();
+            const titlesData = new Set();
+            const schematicsData = new Set();
+
+            // Accumulate data from all selected skills
+            selectedSkills.forEach(skillId => {
+                const skill = allSkills[skillId];
+                if (!skill) return;
+
+                // Experience
+                if (skill.xp && skill.xp.cost > 0) {
+                    experienceData[skill.xp.id] = (experienceData[skill.xp.id] || 0) + skill.xp.cost;
+                }
+
+                // Skill modifiers
+                if (skill.skillModifiers) {
+                    Object.entries(skill.skillModifiers).forEach(([mod, value]) => {
+                        skillModData[mod] = (skillModData[mod] || 0) + value;
+                    });
+                }
+
+                // Commands/Abilities - ENHANCED PROCESSING
+                if (skill.commands && Array.isArray(skill.commands)) {
+                    console.log(`Processing commands for ${skillId}:`, skill.commands);
+                    
+                    skill.commands.forEach((cmd, index) => {
+                        // Extra defensive checks
+                        if (cmd === null || cmd === undefined) {
+                            console.log(`⚠️ Null/undefined command at index ${index} for skill ${skillId}`);
+                            return;
+                        }
+                        
+                        // Convert to string if needed
+                        const cmdStr = String(cmd).trim();
+                        
+                        // SKIP the specific problematic numbers from your screenshot
+                        const problematicNumbers = ['1', '2', '3', '4'];
+                        if (problematicNumbers.includes(cmdStr)) {
+                            console.log(`🚫 BLOCKED number "${cmdStr}" from skill ${skillId} at accumulation stage`);
+                            return;  // This SHOULD skip adding the number
+                        }
+                        
+                        // Debug: log what's being added
+                        console.log(`➕ Adding ability "${cmdStr}" from skill ${skillId}`);
+                        
+                        if (isValidAbility(cmdStr)) {
+                            abilitiesData.add(cmdStr);
+                        } else {
+                            console.log(`❌ Failed validation: "${cmdStr}" from skill ${skillId}`);
+                        }
+                    });
+                }
+
+                // Titles - only for certain skills
+                const title = skill.title || (dataLoaded ? SKILL_TITLE[skillId] : '');
+                if (title && title !== '' && title.trim().length > 0 && isSignificantTitle(title, skillId)) {
+                    titlesData.add(title.trim());
+                }
+
+                // Schematics
+                if (skill.schematics && Array.isArray(skill.schematics)) {
+                    skill.schematics.forEach(schematic => {
+                        if (schematic && schematic !== '' && schematic.trim().length > 0) {
+                            schematicsData.add(schematic.trim());
+                        }
+                    });
+                }
+            });
+
+            let html = '';
+
+            // Experience Required
+            if (Object.keys(experienceData).length > 0) {
+                html += '<div class="data-section">';
+                html += '<div class="data-section-title">Experience Required</div>';
+                html += '<div class="data-list">';
+                Object.entries(experienceData)
+                    .sort(([a], [b]) => a.localeCompare(b))
+                    .forEach(([type, amount]) => {
+                        html += `<div>${amount.toLocaleString()} ${formatExperienceType(type)}</div>`;
+                    });
+                html += '</div></div>';
+            }
+
+            // Skill Mods
+            if (Object.keys(skillModData).length > 0) {
+                html += '<div class="data-section">';
+                html += '<div class="data-section-title">Skill Mods</div>';
+                html += '<div class="data-list">';
+                Object.entries(skillModData)
+                    .sort(([a], [b]) => a.localeCompare(b))
+                    .forEach(([mod, value]) => {
+                        html += `<div>${formatSkillMod(mod)} +${value}</div>`;
+                    });
+                html += '</div></div>';
+            }
+
+            // Abilities - with final cleanup
+            if (abilitiesData.size > 0) {
+                html += '<div class="data-section">';
+                html += '<div class="data-section-title">Abilities</div>';
+                html += '<div class="data-list">';
+                
+                console.log('=== DISPLAYING ABILITIES ===');
+                console.log('Raw abilities in set:', Array.from(abilitiesData));
+                
+                // Convert Set to Array and do STRICT filtering
+                const cleanAbilities = Array.from(abilitiesData)
+                    .filter(ability => {
+                        const abilityStr = String(ability).trim();
+                        
+                        // FINAL CHECK - absolutely no 1,2,3,4
+                        if (['1', '2', '3', '4'].includes(abilityStr)) {
+                            console.log(`🚫 FINAL FILTER caught number: "${abilityStr}"`);
+                            return false;
+                        }
+                        
+                        // Also run through isValidAbility
+                        const valid = isValidAbility(ability);
+                        if (!valid) {
+                            console.log(`❌ Failed final validation: "${abilityStr}"`);
+                        }
+                        return valid;
+                    })
+                    .sort();
+                
+                console.log('Clean abilities after filtering:', cleanAbilities);
+                
+                cleanAbilities.forEach(ability => {
+                    html += `<div>${formatAbility(ability)}</div>`;
+                });
+                
+                html += '</div></div>';
+            }
+
+            // Titles
+            if (titlesData.size > 0) {
+                html += '<div class="data-section">';
+                html += '<div class="data-section-title">Titles</div>';
+                html += '<div class="data-list">';
+                Array.from(titlesData)
+                    .sort()
+                    .forEach(title => {
+                        html += `<div>${title}</div>`;
+                    });
+                html += '</div></div>';
+            }
+
+            // Schematics
+            if (schematicsData.size > 0) {
+                html += '<div class="data-section">';
+                html += '<div class="data-section-title">Schematics</div>';
+                html += '<div class="data-list">';
+                Array.from(schematicsData)
+                    .sort()
+                    .forEach(schematic => {
+                        html += `<div>${schematic}</div>`;
+                    });
+                html += '</div></div>';
+            }
+
+            container.innerHTML = html;
+        }
+
+        // Format experience type
+        function formatExperienceType(type) {
+            if (!type) return 'General';
+            return type.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+        }
+
+        // Format skill mod
+        function formatSkillMod(mod) {
+            if (!mod) return 'Unknown';
+            return mod.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+        }
+
+        // Format ability
+        function formatAbility(ability) {
+            if (!ability) return '';
+            // Remove private_ prefix and format
+            return ability.replace(/^private_\w+_/, '').replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+        }
+
+        // Check if a title is significant
+        function isSignificantTitle(title, skillId) {
+            if (!title || title.trim().length === 0) return false;
+            
+            const trimmed = title.trim();
+            
+            // Filter out generic skill names that aren't real titles
+            if (trimmed.includes(' I') || trimmed.includes(' II') || trimmed.includes(' III') || trimmed.includes(' IV')) {
+                return false;
+            }
+            
+            // Only include titles that contain specific keywords
+            const titleKeywords = ['Master', 'Novice', 'Apprentice', 'Expert', 'Artisan', 'Specialist', 'Artist'];
+            const hasKeyword = titleKeywords.some(keyword => trimmed.includes(keyword));
+            
+            // Or include if it's the 4th skill in a branch or master/novice
+            const isMajorSkill = skillId.includes('_04') || skillId.includes('master') || skillId.includes('novice');
+            
+            return hasKeyword || isMajorSkill;
+        }
+
+        // Control functions
+        function resetBuild() {
+            if (confirm('Are you sure you want to completely reset your build? This will clear all selected skills and professions.')) {
+                selectedSkills.clear();
+                selectedProfessions.clear();
+                currentViewProfession = '';
+                
+                // Reset all profession button states
+                document.querySelectorAll('.profession-btn').forEach(btn => {
+                    btn.classList.remove('selected', 'active');
+                });
+                
+                // Clear the skill tree display
+                const container = document.getElementById('skillTreeContainer');
+                container.innerHTML = `
+                    <div class="no-profession">
+                        <p>Select a profession to view its skill tree</p>
+                        <p style="margin-top: 10px; font-size: 10px;">Load your CONSTANTS.js file to see all professions and skills</p>
+                    </div>
+                `;
+                
+                updateAccumulatedData();
+                updateSkillPointsDisplay();
+            }
+        }
+
+        function saveBuild() {
+            const buildData = {
+                skills: Array.from(selectedSkills),
+                professions: Array.from(selectedProfessions),
+                viewProfession: currentViewProfession,
+                timestamp: new Date().toISOString(),
+                dataLoaded: dataLoaded
+            };
+            localStorage.setItem('swg_build', JSON.stringify(buildData));
+            alert('Build saved successfully!');
+        }
+
+        function loadBuild() {
+            const saved = localStorage.getItem('swg_build');
+            if (saved) {
+                try {
+                    const buildData = JSON.parse(saved);
+                    selectedSkills = new Set(buildData.skills || []);
+                    selectedProfessions = new Set(buildData.professions || []);
+                    if (buildData.viewProfession) {
+                        currentViewProfession = buildData.viewProfession;
+                    }
+                    
+                    updateProfessionButtons();
+                    if (currentViewProfession) {
+                        renderSkillTree(currentViewProfession);
+                    }
+                    updateAccumulatedData();
+                    updateSkillPointsDisplay();
+                    
+                    alert('Build loaded successfully!');
+                } catch (error) {
+                    console.error('Error loading saved build:', error);
+                    alert('Error loading saved build.');
+                }
+            } else {
+                alert('No saved build found.');
+            }
+        }
+
+        function exportBuild() {
+            // Create HTML export similar to Kodan's format
+            if (selectedSkills.size === 0) {
+                alert('No skills selected to export.');
+                return;
+            }
+
+            let html = `<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>SWG Skill Calculator Export</title>
+<style>
+body { background: #295252; color: #ffffff; font-family: Tahoma, sans-serif; font-size: 12px; padding: 20px; }
+.header { color: #ffff00; font-size: 16px; margin-bottom: 20px; }
+.section { margin-bottom: 15px; }
+.section-title { color: #00ffff; font-weight: bold; margin-bottom: 5px; }
+.data-list { margin-left: 20px; }
+</style>
+</head>
+<body>
+<div class="header">SWG Skill Calculator Export - ${new Date().toLocaleDateString()}</div>`;
+
+            // Add selected professions
+            if (selectedProfessions.size > 0) {
+                html += '<div class="section">';
+                html += '<div class="section-title">Selected Professions:</div>';
+                html += '<div class="data-list">';
+                selectedProfessions.forEach(prof => {
+                    html += `${prof}<br>`;
+                });
+                html += '</div></div>';
+            }
+
+            // Add skill points
+            html += '<div class="section">';
+            html += `<div class="section-title">Skill Points: ${totalSkillPoints - getRemainingPoints()} used / ${totalSkillPoints} total</div>`;
+            html += '</div>';
+
+            // Copy the accumulated data sections
+            const accumulatedHTML = document.getElementById('accumulatedData').innerHTML;
+            html += '<div class="section">';
+            html += accumulatedHTML.replace(/data-section/g, 'section').replace(/data-section-title/g, 'section-title');
+            html += '</div>';
+
+            html += '</body></html>';
+
+            // Download the file
+            const blob = new Blob([html], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `swg_build_${new Date().toISOString().slice(0,10)}.html`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // Manual data cleaning function
+        function manualCleanData() {
+            if (!dataLoaded) {
+                alert('Please load a CONSTANTS.js file first.');
+                return;
+            }
+            
+            console.log('🧹 MANUAL DATA CLEANING STARTED');
+            let cleanedCount = 0;
+            const badNumbers = ['1', '2', '3', '4'];
+            
+            // Clean all skills
+            Object.entries(SKILLS).forEach(([skillId, skill]) => {
+                if (skill.commands && Array.isArray(skill.commands)) {
+                    const originalLength = skill.commands.length;
+                    const originalCommands = [...skill.commands];
+                    
+                    // Remove the numbers
+                    skill.commands = skill.commands.filter(cmd => {
+                        const cmdStr = String(cmd).trim();
+                        if (badNumbers.includes(cmdStr)) {
+                            cleanedCount++;
+                            return false;
+                        }
+                        return true;
+                    });
+                    
+                    if (skill.commands.length < originalLength) {
+                        console.log(`Manually cleaned ${skillId}: [${originalCommands.join(', ')}] → [${skill.commands.join(', ')}]`);
+                    }
+                }
+            });
+            
+            console.log(`✅ Manual cleaning complete. Removed ${cleanedCount} number entries.`);
+            alert(`Manual cleaning complete!\n\nRemoved ${cleanedCount} instances of 1, 2, 3, or 4.\n\nClick OK to refresh the display.`);
+            
+            // Force refresh everything
+            forceRefresh();
+        }
+
+        // Show raw data for debugging
+        function showRawData() {
+            console.log('=== RAW DATA INSPECTION ===');
+            
+            const allSkills = dataLoaded ? SKILLS : SAMPLE_SKILLS;
+            
+            if (selectedSkills.size === 0) {
+                alert('Please select some skills first to see their raw data.');
+                return;
+            }
+            
+            console.log('Selected skills and their commands:');
+            selectedSkills.forEach(skillId => {
+                const skill = allSkills[skillId];
+                if (skill) {
+                    console.log(`\n📋 ${skillId}:`);
+                    console.log('  Title:', skill.title || 'No title');
+                    console.log('  Commands:', JSON.stringify(skill.commands || []));
+                    if (skill.commands && skill.commands.length > 0) {
+                        skill.commands.forEach((cmd, idx) => {
+                            console.log(`    [${idx}] Type: ${typeof cmd}, Value: "${cmd}", Raw: ${JSON.stringify(cmd)}`);
+                        });
+                    }
+                }
+            });
+            
+            console.log('\n=== Looking for skills with "1", "2", "3", "4" ===');
+            let foundProblematic = 0;
+            Object.entries(allSkills).forEach(([skillId, skill]) => {
+                if (skill.commands && Array.isArray(skill.commands)) {
+                    const hasNumbers = skill.commands.some(cmd => 
+                        ['1', '2', '3', '4'].includes(String(cmd).trim())
+                    );
+                    if (hasNumbers) {
+                        foundProblematic++;
+                        console.log(`Found in ${skillId}:`, skill.commands);
+                    }
+                }
+            });
+            console.log(`Total skills with problematic numbers: ${foundProblematic}`);
+            
+            alert('Raw data displayed in console. Press F12 to view.');
+        }
+
+        // Force refresh function for debugging
+        function forceRefresh() {
+            console.log('🔄 FORCE REFRESH - Clearing all cached data');
+            
+            // Clear the accumulated data display
+            document.getElementById('accumulatedData').innerHTML = `
+                <div style="text-align: center; color: #888; font-style: italic; margin-top: 20px;">
+                    Select skills to see accumulated data
+                </div>
+            `;
+            
+            // Force update
+            if (currentViewProfession) {
+                renderSkillTree(currentViewProfession);
+            }
+            updateAccumulatedData();
+            updateSkillPointsDisplay();
+            
+            console.log('🔄 Force refresh complete');
+        }
+
+        // Initialize the application
+        function initializeApp() {
+            updateDataStatus(false);
+            initializeProfessionButtons();
+            updateSkillPointsDisplay();
+            updateAccumulatedData();
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', initializeApp);
+    </script>
+</body>
+</html>

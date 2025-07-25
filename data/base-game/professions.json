@@ -1,0 +1,2147 @@
+{
+  "artisan": {
+    "id": "artisan",
+    "displayName": "Artisan",
+    "category": "basic",
+    "description": "Artisan profession from Star Wars Galaxies",
+    "skillTree": {
+      "master_links": [],
+      "master": "crafting_artisan_master",
+      "branch_1": {
+        "links": [
+          "crafting_armorsmith",
+          "crafting_weaponsmith",
+          "crafting_architect",
+          "crafting_droidengineer"
+        ],
+        "skills": [
+          "crafting_artisan_engineering_01",
+          "crafting_artisan_engineering_02",
+          "crafting_artisan_engineering_03",
+          "crafting_artisan_engineering_04"
+        ]
+      },
+      "branch_2": {
+        "links": [
+          "crafting_chef",
+          "crafting_tailor"
+        ],
+        "skills": [
+          "crafting_artisan_domestic_01",
+          "crafting_artisan_domestic_02",
+          "crafting_artisan_domestic_03",
+          "crafting_artisan_domestic_04"
+        ]
+      },
+      "branch_3": {
+        "links": [],
+        "skills": [
+          "crafting_artisan_business_01",
+          "crafting_artisan_business_02",
+          "crafting_artisan_business_03",
+          "crafting_artisan_business_04"
+        ]
+      },
+      "branch_4": {
+        "links": [],
+        "skills": [
+          "crafting_artisan_survey_01",
+          "crafting_artisan_survey_02",
+          "crafting_artisan_survey_03",
+          "crafting_artisan_survey_04"
+        ]
+      },
+      "novice": "crafting_artisan_novice",
+      "novice_links": [
+        ""
+      ]
+    }
+  },
+  "brawler": {
+    "id": "brawler",
+    "displayName": "Brawler",
+    "category": "basic",
+    "description": "Brawler profession from Star Wars Galaxies",
+    "skillTree": {
+      "master_links": [],
+      "master": "combat_brawler_master",
+      "branch_1": {
+        "links": [
+          "combat_unarmed",
+          "combat_smuggler",
+          "combat_commando"
+        ],
+        "skills": [
+          "combat_brawler_unarmed_01",
+          "combat_brawler_unarmed_02",
+          "combat_brawler_unarmed_03",
+          "combat_brawler_unarmed_04"
+        ]
+      },
+      "branch_2": {
+        "links": [
+          "combat_1hsword"
+        ],
+        "skills": [
+          "combat_brawler_1handmelee_01",
+          "combat_brawler_1handmelee_02",
+          "combat_brawler_1handmelee_03",
+          "combat_brawler_1handmelee_04"
+        ]
+      },
+      "branch_3": {
+        "links": [
+          "combat_2hsword"
+        ],
+        "skills": [
+          "combat_brawler_2handmelee_01",
+          "combat_brawler_2handmelee_02",
+          "combat_brawler_2handmelee_03",
+          "combat_brawler_2handmelee_04"
+        ]
+      },
+      "branch_4": {
+        "links": [
+          "combat_polearm"
+        ],
+        "skills": [
+          "combat_brawler_polearm_01",
+          "combat_brawler_polearm_02",
+          "combat_brawler_polearm_03",
+          "combat_brawler_polearm_04"
+        ]
+      },
+      "novice": "combat_brawler_novice",
+      "novice_links": [
+        ""
+      ]
+    }
+  },
+  "entertainer": {
+    "id": "entertainer",
+    "displayName": "Entertainer",
+    "category": "basic",
+    "description": "Entertainer profession from Star Wars Galaxies",
+    "skillTree": {
+      "master_links": [],
+      "master": "social_entertainer_master",
+      "branch_1": {
+        "links": [
+          "social_imagedesigner"
+        ],
+        "skills": [
+          "social_entertainer_hairstyle_01",
+          "social_entertainer_hairstyle_02",
+          "social_entertainer_hairstyle_03",
+          "social_entertainer_hairstyle_04"
+        ]
+      },
+      "branch_2": {
+        "links": [
+          "social_musician"
+        ],
+        "skills": [
+          "social_entertainer_music_01",
+          "social_entertainer_music_02",
+          "social_entertainer_music_03",
+          "social_entertainer_music_04"
+        ]
+      },
+      "branch_3": {
+        "links": [
+          "social_dancer"
+        ],
+        "skills": [
+          "social_entertainer_dance_01",
+          "social_entertainer_dance_02",
+          "social_entertainer_dance_03",
+          "social_entertainer_dance_04"
+        ]
+      },
+      "branch_4": {
+        "links": [
+          "social_musician",
+          "social_dancer"
+        ],
+        "skills": [
+          "social_entertainer_healing_01",
+          "social_entertainer_healing_02",
+          "social_entertainer_healing_03",
+          "social_entertainer_healing_04"
+        ]
+      },
+      "novice": "social_entertainer_novice",
+      "novice_links": [
+        ""
+      ]
+    }
+  },
+  "marksman": {
+    "id": "marksman",
+    "displayName": "Marksman",
+    "category": "basic",
+    "description": "Marksman profession from Star Wars Galaxies",
+    "skillTree": {
+      "master_links": [
+        "combat_bountyhunter",
+        "combat_commando"
+      ],
+      "master": "combat_marksman_master",
+      "branch_1": {
+        "links": [
+          "combat_rifleman"
+        ],
+        "skills": [
+          "combat_marksman_rifle_01",
+          "combat_marksman_rifle_02",
+          "combat_marksman_rifle_03",
+          "combat_marksman_rifle_04"
+        ]
+      },
+      "branch_2": {
+        "links": [
+          "combat_pistol",
+          "combat_smuggler"
+        ],
+        "skills": [
+          "combat_marksman_pistol_01",
+          "combat_marksman_pistol_02",
+          "combat_marksman_pistol_03",
+          "combat_marksman_pistol_04"
+        ]
+      },
+      "branch_3": {
+        "links": [
+          "combat_carbine"
+        ],
+        "skills": [
+          "combat_marksman_carbine_01",
+          "combat_marksman_carbine_02",
+          "combat_marksman_carbine_03",
+          "combat_marksman_carbine_04"
+        ]
+      },
+      "branch_4": {
+        "links": [
+          "science_combatmedic",
+          "outdoors_squadleader"
+        ],
+        "skills": [
+          "combat_marksman_support_01",
+          "combat_marksman_support_02",
+          "combat_marksman_support_03",
+          "combat_marksman_support_04"
+        ]
+      },
+      "novice": "combat_marksman_novice",
+      "novice_links": [
+        ""
+      ]
+    }
+  },
+  "medic": {
+    "id": "medic",
+    "displayName": "Medic",
+    "category": "basic",
+    "description": "Medic profession from Star Wars Galaxies",
+    "skillTree": {
+      "master_links": [],
+      "master": "science_combatmedic_master",
+      "branch_1": {
+        "links": [],
+        "skills": [
+          "science_combatmedic_healing_range_01",
+          "science_combatmedic_healing_range_02",
+          "science_combatmedic_healing_range_03",
+          "science_combatmedic_healing_range_04"
+        ]
+      },
+      "branch_2": {
+        "links": [],
+        "skills": [
+          "science_combatmedic_healing_range_speed_01",
+          "science_combatmedic_healing_range_speed_02",
+          "science_combatmedic_healing_range_speed_03",
+          "science_combatmedic_healing_range_speed_04"
+        ]
+      },
+      "branch_3": {
+        "links": [],
+        "skills": [
+          "science_combatmedic_medicine_01",
+          "science_combatmedic_medicine_02",
+          "science_combatmedic_medicine_03",
+          "science_combatmedic_medicine_04"
+        ]
+      },
+      "branch_4": {
+        "links": [],
+        "skills": [
+          "science_combatmedic_support_01",
+          "science_combatmedic_support_02",
+          "science_combatmedic_support_03",
+          "science_combatmedic_support_04"
+        ]
+      },
+      "novice": "science_combatmedic_novice",
+      "novice_links": [
+        "combat_marksman",
+        "science_medic"
+      ]
+    }
+  },
+  "scout": {
+    "id": "scout",
+    "displayName": "Scout",
+    "category": "basic",
+    "description": "Scout profession from Star Wars Galaxies",
+    "skillTree": {
+      "master_links": [
+        "outdoors_ranger"
+      ],
+      "master": "outdoors_scout_master",
+      "branch_1": {
+        "links": [
+          "outdoors_creaturehandler",
+          "combat_bountyhunter",
+          "outdoors_squadleader"
+        ],
+        "skills": [
+          "outdoors_scout_movement_01",
+          "outdoors_scout_movement_02",
+          "outdoors_scout_movement_03",
+          "outdoors_scout_movement_04"
+        ]
+      },
+      "branch_2": {
+        "links": [],
+        "skills": [
+          "outdoors_scout_tools_01",
+          "outdoors_scout_tools_02",
+          "outdoors_scout_tools_03",
+          "outdoors_scout_tools_04"
+        ]
+      },
+      "branch_3": {
+        "links": [
+          "outdoors_creaturehandler",
+          "outdoors_bio_engineer"
+        ],
+        "skills": [
+          "outdoors_scout_harvest_01",
+          "outdoors_scout_harvest_02",
+          "outdoors_scout_harvest_03",
+          "outdoors_scout_harvest_04"
+        ]
+      },
+      "branch_4": {
+        "links": [
+          "outdoors_squadleader"
+        ],
+        "skills": [
+          "outdoors_scout_camp_01",
+          "outdoors_scout_camp_02",
+          "outdoors_scout_camp_03",
+          "outdoors_scout_camp_04"
+        ]
+      },
+      "novice": "outdoors_scout_novice",
+      "novice_links": [
+        ""
+      ]
+    }
+  },
+  "politician": {
+    "id": "politician",
+    "displayName": "Politician",
+    "category": "basic",
+    "description": "Politician profession from Star Wars Galaxies",
+    "skillTree": {
+      "master_links": [],
+      "master": "social_politician_master",
+      "branch_1": {
+        "links": [],
+        "skills": [
+          "social_politician_fiscal_01",
+          "social_politician_fiscal_02",
+          "social_politician_fiscal_03",
+          "social_politician_fiscal_04"
+        ]
+      },
+      "branch_2": {
+        "links": [],
+        "skills": [
+          "social_politician_martial_01",
+          "social_politician_martial_02",
+          "social_politician_martial_03",
+          "social_politician_martial_04"
+        ]
+      },
+      "branch_3": {
+        "links": [],
+        "skills": [
+          "social_politician_civic_01",
+          "social_politician_civic_02",
+          "social_politician_civic_03",
+          "social_politician_civic_04"
+        ]
+      },
+      "branch_4": {
+        "links": [],
+        "skills": [
+          "social_politician_urban_01",
+          "social_politician_urban_02",
+          "social_politician_urban_03",
+          "social_politician_urban_04"
+        ]
+      },
+      "novice": "social_politician_novice",
+      "novice_links": [
+        ""
+      ]
+    }
+  },
+  "architect": {
+    "id": "architect",
+    "displayName": "Architect",
+    "category": "elite",
+    "description": "Architect profession from Star Wars Galaxies",
+    "skillTree": {
+      "master_links": [],
+      "master": "crafting_architect_master",
+      "branch_1": {
+        "links": [],
+        "skills": [
+          "crafting_architect_production_01",
+          "crafting_architect_production_02",
+          "crafting_architect_production_03",
+          "crafting_architect_production_04"
+        ]
+      },
+      "branch_2": {
+        "links": [],
+        "skills": [
+          "crafting_architect_techniques_01",
+          "crafting_architect_techniques_02",
+          "crafting_architect_techniques_03",
+          "crafting_architect_techniques_04"
+        ]
+      },
+      "branch_3": {
+        "links": [],
+        "skills": [
+          "crafting_architect_harvesting_01",
+          "crafting_architect_harvesting_02",
+          "crafting_architect_harvesting_03",
+          "crafting_architect_harvesting_04"
+        ]
+      },
+      "branch_4": {
+        "links": [],
+        "skills": [
+          "crafting_architect_blueprints_01",
+          "crafting_architect_blueprints_02",
+          "crafting_architect_blueprints_03",
+          "crafting_architect_blueprints_04"
+        ]
+      },
+      "novice": "crafting_architect_novice",
+      "novice_links": [
+        "crafting_artisan"
+      ]
+    }
+  },
+  "armorsmith": {
+    "id": "armorsmith",
+    "displayName": "Armorsmith",
+    "category": "elite",
+    "description": "Armorsmith profession from Star Wars Galaxies",
+    "skillTree": {
+      "master_links": [],
+      "master": "crafting_armorsmith_master",
+      "branch_1": {
+        "links": [],
+        "skills": [
+          "crafting_armorsmith_personal_01",
+          "crafting_armorsmith_personal_02",
+          "crafting_armorsmith_personal_03",
+          "crafting_armorsmith_personal_04"
+        ]
+      },
+      "branch_2": {
+        "links": [],
+        "skills": [
+          "crafting_armorsmith_heavy_01",
+          "crafting_armorsmith_heavy_02",
+          "crafting_armorsmith_heavy_03",
+          "crafting_armorsmith_heavy_04"
+        ]
+      },
+      "branch_3": {
+        "links": [],
+        "skills": [
+          "crafting_armorsmith_deflectors_01",
+          "crafting_armorsmith_deflectors_02",
+          "crafting_armorsmith_deflectors_03",
+          "crafting_armorsmith_deflectors_04"
+        ]
+      },
+      "branch_4": {
+        "links": [],
+        "skills": [
+          "crafting_armorsmith_complexity_01",
+          "crafting_armorsmith_complexity_02",
+          "crafting_armorsmith_complexity_03",
+          "crafting_armorsmith_complexity_04"
+        ]
+      },
+      "novice": "crafting_armorsmith_novice",
+      "novice_links": [
+        "crafting_artisan"
+      ]
+    }
+  },
+  "bio_engineer": {
+    "id": "bio_engineer",
+    "displayName": "Bio-Engineer",
+    "category": "elite",
+    "description": "Bio-Engineer profession from Star Wars Galaxies",
+    "skillTree": {
+      "master_links": [],
+      "master": "outdoors_bio_engineer_master",
+      "branch_1": {
+        "links": [],
+        "skills": [
+          "outdoors_bio_engineer_creature_01",
+          "outdoors_bio_engineer_creature_02",
+          "outdoors_bio_engineer_creature_03",
+          "outdoors_bio_engineer_creature_04"
+        ]
+      },
+      "branch_2": {
+        "links": [],
+        "skills": [
+          "outdoors_bio_engineer_tissue_01",
+          "outdoors_bio_engineer_tissue_02",
+          "outdoors_bio_engineer_tissue_03",
+          "outdoors_bio_engineer_tissue_04"
+        ]
+      },
+      "branch_3": {
+        "links": [],
+        "skills": [
+          "outdoors_bio_engineer_dna_harvesting_01",
+          "outdoors_bio_engineer_dna_harvesting_02",
+          "outdoors_bio_engineer_dna_harvesting_03",
+          "outdoors_bio_engineer_dna_harvesting_04"
+        ]
+      },
+      "branch_4": {
+        "links": [],
+        "skills": [
+          "outdoors_bio_engineer_production_01",
+          "outdoors_bio_engineer_production_02",
+          "outdoors_bio_engineer_production_03",
+          "outdoors_bio_engineer_production_04"
+        ]
+      },
+      "novice": "outdoors_bio_engineer_novice",
+      "novice_links": [
+        "outdoors_scout",
+        "science_medic"
+      ]
+    }
+  },
+  "bounty_hunter": {
+    "id": "bounty_hunter",
+    "displayName": "Bounty Hunter",
+    "category": "elite",
+    "description": "Bounty Hunter profession from Star Wars Galaxies"
+  },
+  "combat_medic": {
+    "id": "combat_medic",
+    "displayName": "Combat Medic",
+    "category": "elite",
+    "description": "Combat Medic profession from Star Wars Galaxies"
+  },
+  "carbineer": {
+    "id": "carbineer",
+    "displayName": "Carbineer",
+    "category": "elite",
+    "description": "Carbineer profession from Star Wars Galaxies",
+    "skillTree": {
+      "master_links": [],
+      "master": "combat_carbine_master",
+      "branch_1": {
+        "links": [],
+        "skills": [
+          "combat_carbine_accuracy_01",
+          "combat_carbine_accuracy_02",
+          "combat_carbine_accuracy_03",
+          "combat_carbine_accuracy_04"
+        ]
+      },
+      "branch_2": {
+        "links": [],
+        "skills": [
+          "combat_carbine_speed_01",
+          "combat_carbine_speed_02",
+          "combat_carbine_speed_03",
+          "combat_carbine_speed_04"
+        ]
+      },
+      "branch_3": {
+        "links": [],
+        "skills": [
+          "combat_carbine_ability_01",
+          "combat_carbine_ability_02",
+          "combat_carbine_ability_03",
+          "combat_carbine_ability_04"
+        ]
+      },
+      "branch_4": {
+        "links": [],
+        "skills": [
+          "combat_carbine_support_01",
+          "combat_carbine_support_02",
+          "combat_carbine_support_03",
+          "combat_carbine_support_04"
+        ]
+      },
+      "novice": "combat_carbine_novice",
+      "novice_links": [
+        "combat_marksman"
+      ]
+    }
+  },
+  "chef": {
+    "id": "chef",
+    "displayName": "Chef",
+    "category": "elite",
+    "description": "Chef profession from Star Wars Galaxies",
+    "skillTree": {
+      "master_links": [],
+      "master": "crafting_chef_master",
+      "branch_1": {
+        "links": [],
+        "skills": [
+          "crafting_chef_dish_01",
+          "crafting_chef_dish_02",
+          "crafting_chef_dish_03",
+          "crafting_chef_dish_04"
+        ]
+      },
+      "branch_2": {
+        "links": [],
+        "skills": [
+          "crafting_chef_dessert_01",
+          "crafting_chef_dessert_02",
+          "crafting_chef_dessert_03",
+          "crafting_chef_dessert_04"
+        ]
+      },
+      "branch_3": {
+        "links": [],
+        "skills": [
+          "crafting_chef_drink_01",
+          "crafting_chef_drink_02",
+          "crafting_chef_drink_03",
+          "crafting_chef_drink_04"
+        ]
+      },
+      "branch_4": {
+        "links": [],
+        "skills": [
+          "crafting_chef_techniques_01",
+          "crafting_chef_techniques_02",
+          "crafting_chef_techniques_03",
+          "crafting_chef_techniques_04"
+        ]
+      },
+      "novice": "crafting_chef_novice",
+      "novice_links": [
+        "crafting_artisan"
+      ]
+    }
+  },
+  "creature_handler": {
+    "id": "creature_handler",
+    "displayName": "Creature Handler",
+    "category": "elite",
+    "description": "Creature Handler profession from Star Wars Galaxies"
+  },
+  "commando": {
+    "id": "commando",
+    "displayName": "Commando",
+    "category": "elite",
+    "description": "Commando profession from Star Wars Galaxies",
+    "skillTree": {
+      "master_links": [],
+      "master": "combat_commando_master",
+      "branch_1": {
+        "links": [],
+        "skills": [
+          "combat_commando_heavyweapon_accuracy_01",
+          "combat_commando_heavyweapon_accuracy_02",
+          "combat_commando_heavyweapon_accuracy_03",
+          "combat_commando_heavyweapon_accuracy_04"
+        ]
+      },
+      "branch_2": {
+        "links": [],
+        "skills": [
+          "combat_commando_heavyweapon_speed_01",
+          "combat_commando_heavyweapon_speed_02",
+          "combat_commando_heavyweapon_speed_03",
+          "combat_commando_heavyweapon_speed_04"
+        ]
+      },
+      "branch_3": {
+        "links": [],
+        "skills": [
+          "combat_commando_thrownweapon_01",
+          "combat_commando_thrownweapon_02",
+          "combat_commando_thrownweapon_03",
+          "combat_commando_thrownweapon_04"
+        ]
+      },
+      "branch_4": {
+        "links": [],
+        "skills": [
+          "combat_commando_support_01",
+          "combat_commando_support_02",
+          "combat_commando_support_03",
+          "combat_commando_support_04"
+        ]
+      },
+      "novice": "combat_commando_novice",
+      "novice_links": [
+        "combat_marksman",
+        "combat_brawler"
+      ]
+    }
+  },
+  "dancer": {
+    "id": "dancer",
+    "displayName": "Dancer",
+    "category": "elite",
+    "description": "Dancer profession from Star Wars Galaxies",
+    "skillTree": {
+      "master_links": [],
+      "master": "social_dancer_master",
+      "branch_1": {
+        "links": [],
+        "skills": [
+          "social_dancer_ability_01",
+          "social_dancer_ability_02",
+          "social_dancer_ability_03",
+          "social_dancer_ability_04"
+        ]
+      },
+      "branch_2": {
+        "links": [],
+        "skills": [
+          "social_dancer_wound_01",
+          "social_dancer_wound_02",
+          "social_dancer_wound_03",
+          "social_dancer_wound_04"
+        ]
+      },
+      "branch_3": {
+        "links": [],
+        "skills": [
+          "social_dancer_knowledge_01",
+          "social_dancer_knowledge_02",
+          "social_dancer_knowledge_03",
+          "social_dancer_knowledge_04"
+        ]
+      },
+      "branch_4": {
+        "links": [],
+        "skills": [
+          "social_dancer_shock_01",
+          "social_dancer_shock_02",
+          "social_dancer_shock_03",
+          "social_dancer_shock_04"
+        ]
+      },
+      "novice": "social_dancer_novice",
+      "novice_links": [
+        "social_entertainer"
+      ]
+    }
+  },
+  "doctor": {
+    "id": "doctor",
+    "displayName": "Doctor",
+    "category": "elite",
+    "description": "Doctor profession from Star Wars Galaxies",
+    "skillTree": {
+      "master_links": [],
+      "master": "science_doctor_master",
+      "branch_1": {
+        "links": [],
+        "skills": [
+          "science_doctor_wound_speed_01",
+          "science_doctor_wound_speed_02",
+          "science_doctor_wound_speed_03",
+          "science_doctor_wound_speed_04"
+        ]
+      },
+      "branch_2": {
+        "links": [],
+        "skills": [
+          "science_doctor_wound_01",
+          "science_doctor_wound_02",
+          "science_doctor_wound_03",
+          "science_doctor_wound_04"
+        ]
+      },
+      "branch_3": {
+        "links": [],
+        "skills": [
+          "science_doctor_ability_01",
+          "science_doctor_ability_02",
+          "science_doctor_ability_03",
+          "science_doctor_ability_04"
+        ]
+      },
+      "branch_4": {
+        "links": [],
+        "skills": [
+          "science_doctor_support_01",
+          "science_doctor_support_02",
+          "science_doctor_support_03",
+          "science_doctor_support_04"
+        ]
+      },
+      "novice": "science_doctor_novice",
+      "novice_links": [
+        "science_medic"
+      ]
+    }
+  },
+  "droid_engineer": {
+    "id": "droid_engineer",
+    "displayName": "Droid Engineer",
+    "category": "elite",
+    "description": "Droid Engineer profession from Star Wars Galaxies"
+  },
+  "fencer": {
+    "id": "fencer",
+    "displayName": "Fencer",
+    "category": "elite",
+    "description": "Fencer profession from Star Wars Galaxies"
+  },
+  "image_designer": {
+    "id": "image_designer",
+    "displayName": "Image Designer",
+    "category": "elite",
+    "description": "Image Designer profession from Star Wars Galaxies"
+  },
+  "merchant": {
+    "id": "merchant",
+    "displayName": "Merchant",
+    "category": "elite",
+    "description": "Merchant profession from Star Wars Galaxies",
+    "skillTree": {
+      "master_links": [],
+      "master": "crafting_merchant_master",
+      "branch_1": {
+        "links": [],
+        "skills": [
+          "crafting_merchant_advertising_01",
+          "crafting_merchant_advertising_02",
+          "crafting_merchant_advertising_03",
+          "crafting_merchant_advertising_04"
+        ]
+      },
+      "branch_2": {
+        "links": [],
+        "skills": [
+          "crafting_merchant_sales_01",
+          "crafting_merchant_sales_02",
+          "crafting_merchant_sales_03",
+          "crafting_merchant_sales_04"
+        ]
+      },
+      "branch_3": {
+        "links": [],
+        "skills": [
+          "crafting_merchant_hiring_01",
+          "crafting_merchant_hiring_02",
+          "crafting_merchant_hiring_03",
+          "crafting_merchant_hiring_04"
+        ]
+      },
+      "branch_4": {
+        "links": [],
+        "skills": [
+          "crafting_merchant_management_01",
+          "crafting_merchant_management_02",
+          "crafting_merchant_management_03",
+          "crafting_merchant_management_04"
+        ]
+      },
+      "novice": "crafting_merchant_novice",
+      "novice_links": [
+        "crafting_artisan"
+      ]
+    }
+  },
+  "musician": {
+    "id": "musician",
+    "displayName": "Musician",
+    "category": "elite",
+    "description": "Musician profession from Star Wars Galaxies",
+    "skillTree": {
+      "master_links": [],
+      "master": "social_musician_master",
+      "branch_1": {
+        "links": [],
+        "skills": [
+          "social_musician_ability_01",
+          "social_musician_ability_02",
+          "social_musician_ability_03",
+          "social_musician_ability_04"
+        ]
+      },
+      "branch_2": {
+        "links": [],
+        "skills": [
+          "social_musician_wound_01",
+          "social_musician_wound_02",
+          "social_musician_wound_03",
+          "social_musician_wound_04"
+        ]
+      },
+      "branch_3": {
+        "links": [],
+        "skills": [
+          "social_musician_knowledge_01",
+          "social_musician_knowledge_02",
+          "social_musician_knowledge_03",
+          "social_musician_knowledge_04"
+        ]
+      },
+      "branch_4": {
+        "links": [],
+        "skills": [
+          "social_musician_shock_01",
+          "social_musician_shock_02",
+          "social_musician_shock_03",
+          "social_musician_shock_04"
+        ]
+      },
+      "novice": "social_musician_novice",
+      "novice_links": [
+        "social_entertainer"
+      ]
+    }
+  },
+  "pikeman": {
+    "id": "pikeman",
+    "displayName": "Pikeman",
+    "category": "elite",
+    "description": "Pikeman profession from Star Wars Galaxies"
+  },
+  "pistoleer": {
+    "id": "pistoleer",
+    "displayName": "Pistoleer",
+    "category": "elite",
+    "description": "Pistoleer profession from Star Wars Galaxies",
+    "skillTree": {
+      "master_links": [],
+      "master": "combat_pistol_master",
+      "branch_1": {
+        "links": [],
+        "skills": [
+          "combat_pistol_accuracy_01",
+          "combat_pistol_accuracy_02",
+          "combat_pistol_accuracy_03",
+          "combat_pistol_accuracy_04"
+        ]
+      },
+      "branch_2": {
+        "links": [],
+        "skills": [
+          "combat_pistol_speed_01",
+          "combat_pistol_speed_02",
+          "combat_pistol_speed_03",
+          "combat_pistol_speed_04"
+        ]
+      },
+      "branch_3": {
+        "links": [],
+        "skills": [
+          "combat_pistol_ability_01",
+          "combat_pistol_ability_02",
+          "combat_pistol_ability_03",
+          "combat_pistol_ability_04"
+        ]
+      },
+      "branch_4": {
+        "links": [],
+        "skills": [
+          "combat_pistol_support_01",
+          "combat_pistol_support_02",
+          "combat_pistol_support_03",
+          "combat_pistol_support_04"
+        ]
+      },
+      "novice": "combat_pistol_novice",
+      "novice_links": [
+        "combat_marksman"
+      ]
+    }
+  },
+  "ranger": {
+    "id": "ranger",
+    "displayName": "Ranger",
+    "category": "elite",
+    "description": "Ranger profession from Star Wars Galaxies",
+    "skillTree": {
+      "master_links": [],
+      "master": "outdoors_ranger_master",
+      "branch_1": {
+        "links": [],
+        "skills": [
+          "outdoors_ranger_movement_01",
+          "outdoors_ranger_movement_02",
+          "outdoors_ranger_movement_03",
+          "outdoors_ranger_movement_04"
+        ]
+      },
+      "branch_2": {
+        "links": [],
+        "skills": [
+          "outdoors_ranger_tracking_01",
+          "outdoors_ranger_tracking_02",
+          "outdoors_ranger_tracking_03",
+          "outdoors_ranger_tracking_04"
+        ]
+      },
+      "branch_3": {
+        "links": [],
+        "skills": [
+          "outdoors_ranger_harvest_01",
+          "outdoors_ranger_harvest_02",
+          "outdoors_ranger_harvest_03",
+          "outdoors_ranger_harvest_04"
+        ]
+      },
+      "branch_4": {
+        "links": [],
+        "skills": [
+          "outdoors_ranger_support_01",
+          "outdoors_ranger_support_02",
+          "outdoors_ranger_support_03",
+          "outdoors_ranger_support_04"
+        ]
+      },
+      "novice": "outdoors_ranger_novice",
+      "novice_links": [
+        "outdoors_scout"
+      ]
+    }
+  },
+  "rifleman": {
+    "id": "rifleman",
+    "displayName": "Rifleman",
+    "category": "elite",
+    "description": "Rifleman profession from Star Wars Galaxies",
+    "skillTree": {
+      "master_links": [],
+      "master": "combat_rifleman_master",
+      "branch_1": {
+        "links": [],
+        "skills": [
+          "combat_rifleman_accuracy_01",
+          "combat_rifleman_accuracy_02",
+          "combat_rifleman_accuracy_03",
+          "combat_rifleman_accuracy_04"
+        ]
+      },
+      "branch_2": {
+        "links": [],
+        "skills": [
+          "combat_rifleman_speed_01",
+          "combat_rifleman_speed_02",
+          "combat_rifleman_speed_03",
+          "combat_rifleman_speed_04"
+        ]
+      },
+      "branch_3": {
+        "links": [],
+        "skills": [
+          "combat_rifleman_ability_01",
+          "combat_rifleman_ability_02",
+          "combat_rifleman_ability_03",
+          "combat_rifleman_ability_04"
+        ]
+      },
+      "branch_4": {
+        "links": [],
+        "skills": [
+          "combat_rifleman_support_01",
+          "combat_rifleman_support_02",
+          "combat_rifleman_support_03",
+          "combat_rifleman_support_04"
+        ]
+      },
+      "novice": "combat_rifleman_novice",
+      "novice_links": [
+        "combat_marksman"
+      ]
+    }
+  },
+  "smuggler": {
+    "id": "smuggler",
+    "displayName": "Smuggler",
+    "category": "elite",
+    "description": "Smuggler profession from Star Wars Galaxies",
+    "skillTree": {
+      "master_links": [],
+      "master": "combat_smuggler_master",
+      "branch_1": {
+        "links": [],
+        "skills": [
+          "combat_smuggler_underworld_01",
+          "combat_smuggler_underworld_02",
+          "combat_smuggler_underworld_03",
+          "combat_smuggler_underworld_04"
+        ]
+      },
+      "branch_2": {
+        "links": [],
+        "skills": [
+          "combat_smuggler_slicing_01",
+          "combat_smuggler_slicing_02",
+          "combat_smuggler_slicing_03",
+          "combat_smuggler_slicing_04"
+        ]
+      },
+      "branch_3": {
+        "links": [],
+        "skills": [
+          "combat_smuggler_combat_01",
+          "combat_smuggler_combat_02",
+          "combat_smuggler_combat_03",
+          "combat_smuggler_combat_04"
+        ]
+      },
+      "branch_4": {
+        "links": [],
+        "skills": [
+          "combat_smuggler_spice_01",
+          "combat_smuggler_spice_02",
+          "combat_smuggler_spice_03",
+          "combat_smuggler_spice_04"
+        ]
+      },
+      "novice": "combat_smuggler_novice",
+      "novice_links": [
+        "combat_marksman",
+        "combat_brawler"
+      ]
+    }
+  },
+  "squad_leader": {
+    "id": "squad_leader",
+    "displayName": "Squad Leader",
+    "category": "elite",
+    "description": "Squad Leader profession from Star Wars Galaxies"
+  },
+  "swordsman": {
+    "id": "swordsman",
+    "displayName": "Swordsman",
+    "category": "elite",
+    "description": "Swordsman profession from Star Wars Galaxies"
+  },
+  "tailor": {
+    "id": "tailor",
+    "displayName": "Tailor",
+    "category": "elite",
+    "description": "Tailor profession from Star Wars Galaxies",
+    "skillTree": {
+      "master_links": [],
+      "master": "crafting_tailor_master",
+      "branch_1": {
+        "links": [],
+        "skills": [
+          "crafting_tailor_casual_01",
+          "crafting_tailor_casual_02",
+          "crafting_tailor_casual_03",
+          "crafting_tailor_casual_04"
+        ]
+      },
+      "branch_2": {
+        "links": [],
+        "skills": [
+          "crafting_tailor_field_01",
+          "crafting_tailor_field_02",
+          "crafting_tailor_field_03",
+          "crafting_tailor_field_04"
+        ]
+      },
+      "branch_3": {
+        "links": [],
+        "skills": [
+          "crafting_tailor_formal_01",
+          "crafting_tailor_formal_02",
+          "crafting_tailor_formal_03",
+          "crafting_tailor_formal_04"
+        ]
+      },
+      "branch_4": {
+        "links": [],
+        "skills": [
+          "crafting_tailor_production_01",
+          "crafting_tailor_production_02",
+          "crafting_tailor_production_03",
+          "crafting_tailor_production_04"
+        ]
+      },
+      "novice": "crafting_tailor_novice",
+      "novice_links": [
+        "crafting_artisan"
+      ]
+    }
+  },
+  "teras_kasi_artist": {
+    "id": "teras_kasi_artist",
+    "displayName": "Teras Kasi Artist",
+    "category": "elite",
+    "description": "Teras Kasi Artist profession from Star Wars Galaxies"
+  },
+  "weaponsmith": {
+    "id": "weaponsmith",
+    "displayName": "Weaponsmith",
+    "category": "elite",
+    "description": "Weaponsmith profession from Star Wars Galaxies",
+    "skillTree": {
+      "master_links": [],
+      "master": "crafting_weaponsmith_master",
+      "branch_1": {
+        "links": [],
+        "skills": [
+          "crafting_weaponsmith_melee_01",
+          "crafting_weaponsmith_melee_02",
+          "crafting_weaponsmith_melee_03",
+          "crafting_weaponsmith_melee_04"
+        ]
+      },
+      "branch_2": {
+        "links": [],
+        "skills": [
+          "crafting_weaponsmith_firearms_01",
+          "crafting_weaponsmith_firearms_02",
+          "crafting_weaponsmith_firearms_03",
+          "crafting_weaponsmith_firearms_04"
+        ]
+      },
+      "branch_3": {
+        "links": [],
+        "skills": [
+          "crafting_weaponsmith_munitions_01",
+          "crafting_weaponsmith_munitions_02",
+          "crafting_weaponsmith_munitions_03",
+          "crafting_weaponsmith_munitions_04"
+        ]
+      },
+      "branch_4": {
+        "links": [],
+        "skills": [
+          "crafting_weaponsmith_techniques_01",
+          "crafting_weaponsmith_techniques_02",
+          "crafting_weaponsmith_techniques_03",
+          "crafting_weaponsmith_techniques_04"
+        ]
+      },
+      "novice": "crafting_weaponsmith_novice",
+      "novice_links": [
+        "crafting_artisan"
+      ]
+    }
+  },
+  "combat_prowess": {
+    "id": "combat_prowess",
+    "displayName": "Combat Prowess",
+    "category": "forceSensitive",
+    "description": "Combat Prowess profession from Star Wars Galaxies",
+    "skillTree": {
+      "master_links": [],
+      "master": "force_sensitive_combat_prowess_master",
+      "branch_1": {
+        "links": [],
+        "skills": [
+          "force_sensitive_combat_prowess_ranged_accuracy_01",
+          "force_sensitive_combat_prowess_ranged_accuracy_02",
+          "force_sensitive_combat_prowess_ranged_accuracy_03",
+          "force_sensitive_combat_prowess_ranged_accuracy_04"
+        ]
+      },
+      "branch_2": {
+        "links": [],
+        "skills": [
+          "force_sensitive_combat_prowess_ranged_speed_01",
+          "force_sensitive_combat_prowess_ranged_speed_02",
+          "force_sensitive_combat_prowess_ranged_speed_03",
+          "force_sensitive_combat_prowess_ranged_speed_04"
+        ]
+      },
+      "branch_3": {
+        "links": [],
+        "skills": [
+          "force_sensitive_combat_prowess_melee_accuracy_01",
+          "force_sensitive_combat_prowess_melee_accuracy_02",
+          "force_sensitive_combat_prowess_melee_accuracy_03",
+          "force_sensitive_combat_prowess_melee_accuracy_04"
+        ]
+      },
+      "branch_4": {
+        "links": [],
+        "skills": [
+          "force_sensitive_combat_prowess_melee_speed_01",
+          "force_sensitive_combat_prowess_melee_speed_02",
+          "force_sensitive_combat_prowess_melee_speed_03",
+          "force_sensitive_combat_prowess_melee_speed_04"
+        ]
+      },
+      "novice": "force_sensitive_combat_prowess_novice",
+      "novice_links": []
+    }
+  },
+  "enhanced_reflexes": {
+    "id": "enhanced_reflexes",
+    "displayName": "Enhanced Reflexes",
+    "category": "forceSensitive",
+    "description": "Enhanced Reflexes profession from Star Wars Galaxies",
+    "skillTree": {
+      "master_links": [],
+      "master": "force_sensitive_enhanced_reflexes_master",
+      "branch_1": {
+        "links": [],
+        "skills": [
+          "force_sensitive_enhanced_reflexes_ranged_defense_01",
+          "force_sensitive_enhanced_reflexes_ranged_defense_02",
+          "force_sensitive_enhanced_reflexes_ranged_defense_03",
+          "force_sensitive_enhanced_reflexes_ranged_defense_04"
+        ]
+      },
+      "branch_2": {
+        "links": [],
+        "skills": [
+          "force_sensitive_enhanced_reflexes_melee_defense_01",
+          "force_sensitive_enhanced_reflexes_melee_defense_02",
+          "force_sensitive_enhanced_reflexes_melee_defense_03",
+          "force_sensitive_enhanced_reflexes_melee_defense_04"
+        ]
+      },
+      "branch_3": {
+        "links": [],
+        "skills": [
+          "force_sensitive_enhanced_reflexes_vehicle_control_01",
+          "force_sensitive_enhanced_reflexes_vehicle_control_02",
+          "force_sensitive_enhanced_reflexes_vehicle_control_03",
+          "force_sensitive_enhanced_reflexes_vehicle_control_04"
+        ]
+      },
+      "branch_4": {
+        "links": [],
+        "skills": [
+          "force_sensitive_enhanced_reflexes_survival_01",
+          "force_sensitive_enhanced_reflexes_survival_02",
+          "force_sensitive_enhanced_reflexes_survival_03",
+          "force_sensitive_enhanced_reflexes_survival_04"
+        ]
+      },
+      "novice": "force_sensitive_enhanced_reflexes_novice",
+      "novice_links": []
+    }
+  },
+  "crafting_mastery": {
+    "id": "crafting_mastery",
+    "displayName": "Crafting Mastery",
+    "category": "forceSensitive",
+    "description": "Crafting Mastery profession from Star Wars Galaxies",
+    "skillTree": {
+      "master_links": [],
+      "master": "force_sensitive_crafting_mastery_master",
+      "branch_1": {
+        "links": [],
+        "skills": [
+          "force_sensitive_crafting_mastery_experimentation_01",
+          "force_sensitive_crafting_mastery_experimentation_02",
+          "force_sensitive_crafting_mastery_experimentation_03",
+          "force_sensitive_crafting_mastery_experimentation_04"
+        ]
+      },
+      "branch_2": {
+        "links": [],
+        "skills": [
+          "force_sensitive_crafting_mastery_assembly_01",
+          "force_sensitive_crafting_mastery_assembly_02",
+          "force_sensitive_crafting_mastery_assembly_03",
+          "force_sensitive_crafting_mastery_assembly_04"
+        ]
+      },
+      "branch_3": {
+        "links": [],
+        "skills": [
+          "force_sensitive_crafting_mastery_repair_01",
+          "force_sensitive_crafting_mastery_repair_02",
+          "force_sensitive_crafting_mastery_repair_03",
+          "force_sensitive_crafting_mastery_repair_04"
+        ]
+      },
+      "branch_4": {
+        "links": [],
+        "skills": [
+          "force_sensitive_crafting_mastery_technique_01",
+          "force_sensitive_crafting_mastery_technique_02",
+          "force_sensitive_crafting_mastery_technique_03",
+          "force_sensitive_crafting_mastery_technique_04"
+        ]
+      },
+      "novice": "force_sensitive_crafting_novicey_novice",
+      "novice_links": []
+    }
+  },
+  "heightened_senses": {
+    "id": "heightened_senses",
+    "displayName": "Heightened Senses",
+    "category": "forceSensitive",
+    "description": "Heightened Senses profession from Star Wars Galaxies",
+    "skillTree": {
+      "master_links": [],
+      "master": "force_sensitive_heightened_senses_master",
+      "branch_1": {
+        "links": [],
+        "skills": [
+          "force_sensitive_heightened_senses_healing_01",
+          "force_sensitive_heightened_senses_healing_02",
+          "force_sensitive_heightened_senses_healing_03",
+          "force_sensitive_heightened_senses_healing_04"
+        ]
+      },
+      "branch_2": {
+        "links": [],
+        "skills": [
+          "force_sensitive_heightened_senses_surveying_01",
+          "force_sensitive_heightened_senses_surveying_02",
+          "force_sensitive_heightened_senses_surveying_03",
+          "force_sensitive_heightened_senses_surveying_04"
+        ]
+      },
+      "branch_3": {
+        "links": [],
+        "skills": [
+          "force_sensitive_heightened_senses_persuasion_01",
+          "force_sensitive_heightened_senses_persuasion_02",
+          "force_sensitive_heightened_senses_persuasion_03",
+          "force_sensitive_heightened_senses_persuasion_04"
+        ]
+      },
+      "branch_4": {
+        "links": [],
+        "skills": [
+          "force_sensitive_heightened_senses_luck_01",
+          "force_sensitive_heightened_senses_luck_02",
+          "force_sensitive_heightened_senses_luck_03",
+          "force_sensitive_heightened_senses_luck_04"
+        ]
+      },
+      "novice": "force_sensitive_heightened_senses_novice",
+      "novice_links": []
+    }
+  },
+  "lightsaber": {
+    "id": "lightsaber",
+    "displayName": "Lightsaber",
+    "category": "jedi",
+    "description": "Lightsaber profession from Star Wars Galaxies",
+    "skillTree": {
+      "master_links": [],
+      "master": "force_discipline_light_saber_master",
+      "branch_1": {
+        "links": [],
+        "skills": [
+          "force_discipline_light_saber_one_hand_01",
+          "force_discipline_light_saber_one_hand_02",
+          "force_discipline_light_saber_one_hand_03",
+          "force_discipline_light_saber_one_hand_04"
+        ]
+      },
+      "branch_2": {
+        "links": [],
+        "skills": [
+          "force_discipline_light_saber_two_hand_01",
+          "force_discipline_light_saber_two_hand_02",
+          "force_discipline_light_saber_two_hand_03",
+          "force_discipline_light_saber_two_hand_04"
+        ]
+      },
+      "branch_3": {
+        "links": [],
+        "skills": [
+          "force_discipline_light_saber_polearm_01",
+          "force_discipline_light_saber_polearm_02",
+          "force_discipline_light_saber_polearm_03",
+          "force_discipline_light_saber_polearm_04"
+        ]
+      },
+      "branch_4": {
+        "links": [],
+        "skills": [
+          "force_discipline_light_saber_technique_01",
+          "force_discipline_light_saber_technique_02",
+          "force_discipline_light_saber_technique_03",
+          "force_discipline_light_saber_technique_04"
+        ]
+      },
+      "novice": "force_discipline_light_saber_novice",
+      "novice_links": []
+    }
+  },
+  "powers": {
+    "id": "powers",
+    "displayName": "Powers",
+    "category": "jedi",
+    "description": "Powers profession from Star Wars Galaxies",
+    "skillTree": {
+      "master_links": [],
+      "master": "force_discipline_powers_master",
+      "branch_1": {
+        "links": [],
+        "skills": [
+          "force_discipline_powers_lightning_01",
+          "force_discipline_powers_lightning_02",
+          "force_discipline_powers_lightning_03",
+          "force_discipline_powers_lightning_04"
+        ]
+      },
+      "branch_2": {
+        "links": [],
+        "skills": [
+          "force_discipline_powers_mental_01",
+          "force_discipline_powers_mental_02",
+          "force_discipline_powers_mental_03",
+          "force_discipline_powers_mental_04"
+        ]
+      },
+      "branch_3": {
+        "links": [],
+        "skills": [
+          "force_discipline_powers_debuff_01",
+          "force_discipline_powers_debuff_02",
+          "force_discipline_powers_debuff_03",
+          "force_discipline_powers_debuff_04"
+        ]
+      },
+      "branch_4": {
+        "links": [],
+        "skills": [
+          "force_discipline_powers_push_01",
+          "force_discipline_powers_push_02",
+          "force_discipline_powers_push_03",
+          "force_discipline_powers_push_04"
+        ]
+      },
+      "novice": "force_discipline_powers_novice",
+      "novice_links": []
+    }
+  },
+  "healing": {
+    "id": "healing",
+    "displayName": "Healing",
+    "category": "jedi",
+    "description": "Healing profession from Star Wars Galaxies",
+    "skillTree": {
+      "master_links": [],
+      "master": "force_discipline_healing_master",
+      "branch_1": {
+        "links": [],
+        "skills": [
+          "force_discipline_healing_damage_01",
+          "force_discipline_healing_damage_02",
+          "force_discipline_healing_damage_03",
+          "force_discipline_healing_damage_04"
+        ]
+      },
+      "branch_2": {
+        "links": [],
+        "skills": [
+          "force_discipline_healing_wound_01",
+          "force_discipline_healing_wound_02",
+          "force_discipline_healing_wound_03",
+          "force_discipline_healing_wound_04"
+        ]
+      },
+      "branch_3": {
+        "links": [],
+        "skills": [
+          "force_discipline_healing_other_01",
+          "force_discipline_healing_other_02",
+          "force_discipline_healing_other_03",
+          "force_discipline_healing_other_04"
+        ]
+      },
+      "branch_4": {
+        "links": [],
+        "skills": [
+          "force_discipline_healing_states_01",
+          "force_discipline_healing_states_02",
+          "force_discipline_healing_states_03",
+          "force_discipline_healing_states_04"
+        ]
+      },
+      "novice": "force_discipline_healing_novice",
+      "novice_links": []
+    }
+  },
+  "enchancements": {
+    "id": "enchancements",
+    "displayName": "Enchancements",
+    "category": "jedi",
+    "description": "Enchancements profession from Star Wars Galaxies"
+  },
+  "defender": {
+    "id": "defender",
+    "displayName": "Defender",
+    "category": "jedi",
+    "description": "Defender profession from Star Wars Galaxies",
+    "skillTree": {
+      "master_links": [],
+      "master": "force_discipline_defender_master",
+      "branch_1": {
+        "links": [],
+        "skills": [
+          "force_discipline_defender_melee_defense_01",
+          "force_discipline_defender_melee_defense_02",
+          "force_discipline_defender_melee_defense_03",
+          "force_discipline_defender_melee_defense_04"
+        ]
+      },
+      "branch_2": {
+        "links": [],
+        "skills": [
+          "force_discipline_defender_ranged_defense_01",
+          "force_discipline_defender_ranged_defense_02",
+          "force_discipline_defender_ranged_defense_03",
+          "force_discipline_defender_ranged_defense_04"
+        ]
+      },
+      "branch_3": {
+        "links": [],
+        "skills": [
+          "force_discipline_defender_force_defense_01",
+          "force_discipline_defender_force_defense_02",
+          "force_discipline_defender_force_defense_03",
+          "force_discipline_defender_force_defense_04"
+        ]
+      },
+      "branch_4": {
+        "links": [],
+        "skills": [
+          "force_discipline_defender_preternatural_defense_01",
+          "force_discipline_defender_preternatural_defense_02",
+          "force_discipline_defender_preternatural_defense_03",
+          "force_discipline_defender_preternatural_defense_04"
+        ]
+      },
+      "novice": "force_discipline_defender_novice",
+      "novice_links": []
+    }
+  },
+  "combat_unarmed": {
+    "id": "combat_unarmed",
+    "displayName": "Combat Unarmed",
+    "category": "unknown",
+    "skillTree": {
+      "master_links": [],
+      "master": "combat_unarmed_master",
+      "branch_1": {
+        "links": [],
+        "skills": [
+          "combat_unarmed_accuracy_01",
+          "combat_unarmed_accuracy_02",
+          "combat_unarmed_accuracy_03",
+          "combat_unarmed_accuracy_04"
+        ]
+      },
+      "branch_2": {
+        "links": [],
+        "skills": [
+          "combat_unarmed_speed_01",
+          "combat_unarmed_speed_02",
+          "combat_unarmed_speed_03",
+          "combat_unarmed_speed_04"
+        ]
+      },
+      "branch_3": {
+        "links": [],
+        "skills": [
+          "combat_unarmed_ability_01",
+          "combat_unarmed_ability_02",
+          "combat_unarmed_ability_03",
+          "combat_unarmed_ability_04"
+        ]
+      },
+      "branch_4": {
+        "links": [],
+        "skills": [
+          "combat_unarmed_support_01",
+          "combat_unarmed_support_02",
+          "combat_unarmed_support_03",
+          "combat_unarmed_support_04"
+        ]
+      },
+      "novice": "combat_unarmed_novice",
+      "novice_links": [
+        "combat_brawler"
+      ]
+    }
+  },
+  "combat_1hsword": {
+    "id": "combat_1hsword",
+    "displayName": "Combat 1hsword",
+    "category": "unknown",
+    "skillTree": {
+      "master_links": [],
+      "master": "combat_1hsword_master",
+      "branch_1": {
+        "links": [],
+        "skills": [
+          "combat_1hsword_accuracy_01",
+          "combat_1hsword_accuracy_02",
+          "combat_1hsword_accuracy_03",
+          "combat_1hsword_accuracy_04"
+        ]
+      },
+      "branch_2": {
+        "links": [],
+        "skills": [
+          "combat_1hsword_speed_01",
+          "combat_1hsword_speed_02",
+          "combat_1hsword_speed_03",
+          "combat_1hsword_speed_04"
+        ]
+      },
+      "branch_3": {
+        "links": [],
+        "skills": [
+          "combat_1hsword_ability_01",
+          "combat_1hsword_ability_02",
+          "combat_1hsword_ability_03",
+          "combat_1hsword_ability_04"
+        ]
+      },
+      "branch_4": {
+        "links": [],
+        "skills": [
+          "combat_1hsword_support_01",
+          "combat_1hsword_support_02",
+          "combat_1hsword_support_03",
+          "combat_1hsword_support_04"
+        ]
+      },
+      "novice": "combat_1hsword_novice",
+      "novice_links": [
+        "combat_brawler"
+      ]
+    }
+  },
+  "combat_2hsword": {
+    "id": "combat_2hsword",
+    "displayName": "Combat 2hsword",
+    "category": "unknown",
+    "skillTree": {
+      "master_links": [],
+      "master": "combat_2hsword_master",
+      "branch_1": {
+        "links": [],
+        "skills": [
+          "combat_2hsword_accuracy_01",
+          "combat_2hsword_accuracy_02",
+          "combat_2hsword_accuracy_03",
+          "combat_2hsword_accuracy_04"
+        ]
+      },
+      "branch_2": {
+        "links": [],
+        "skills": [
+          "combat_2hsword_speed_01",
+          "combat_2hsword_speed_02",
+          "combat_2hsword_speed_03",
+          "combat_2hsword_speed_04"
+        ]
+      },
+      "branch_3": {
+        "links": [],
+        "skills": [
+          "combat_2hsword_ability_01",
+          "combat_2hsword_ability_02",
+          "combat_2hsword_ability_03",
+          "combat_2hsword_ability_04"
+        ]
+      },
+      "branch_4": {
+        "links": [],
+        "skills": [
+          "combat_2hsword_support_01",
+          "combat_2hsword_support_02",
+          "combat_2hsword_support_03",
+          "combat_2hsword_support_04"
+        ]
+      },
+      "novice": "combat_2hsword_novice",
+      "novice_links": [
+        "combat_brawler"
+      ]
+    }
+  },
+  "combat_polearm": {
+    "id": "combat_polearm",
+    "displayName": "Combat Polearm",
+    "category": "unknown",
+    "skillTree": {
+      "master_links": [],
+      "master": "combat_polearm_master",
+      "branch_1": {
+        "links": [],
+        "skills": [
+          "combat_polearm_accuracy_01",
+          "combat_polearm_accuracy_02",
+          "combat_polearm_accuracy_03",
+          "combat_polearm_accuracy_04"
+        ]
+      },
+      "branch_2": {
+        "links": [],
+        "skills": [
+          "combat_polearm_speed_01",
+          "combat_polearm_speed_02",
+          "combat_polearm_speed_03",
+          "combat_polearm_speed_04"
+        ]
+      },
+      "branch_3": {
+        "links": [],
+        "skills": [
+          "combat_polearm_ability_01",
+          "combat_polearm_ability_02",
+          "combat_polearm_ability_03",
+          "combat_polearm_ability_04"
+        ]
+      },
+      "branch_4": {
+        "links": [],
+        "skills": [
+          "combat_polearm_support_01",
+          "combat_polearm_support_02",
+          "combat_polearm_support_03",
+          "combat_polearm_support_04"
+        ]
+      },
+      "novice": "combat_polearm_novice",
+      "novice_links": [
+        "combat_brawler"
+      ]
+    }
+  },
+  "outdoors_creaturehandler": {
+    "id": "outdoors_creaturehandler",
+    "displayName": "Outdoors Creaturehandler",
+    "category": "unknown",
+    "skillTree": {
+      "master_links": [],
+      "master": "outdoors_creaturehandler_master",
+      "branch_1": {
+        "links": [],
+        "skills": [
+          "outdoors_creaturehandler_taming_01",
+          "outdoors_creaturehandler_taming_02",
+          "outdoors_creaturehandler_taming_03",
+          "outdoors_creaturehandler_taming_04"
+        ]
+      },
+      "branch_2": {
+        "links": [],
+        "skills": [
+          "outdoors_creaturehandler_training_01",
+          "outdoors_creaturehandler_training_02",
+          "outdoors_creaturehandler_training_03",
+          "outdoors_creaturehandler_training_04"
+        ]
+      },
+      "branch_3": {
+        "links": [],
+        "skills": [
+          "outdoors_creaturehandler_healing_01",
+          "outdoors_creaturehandler_healing_02",
+          "outdoors_creaturehandler_healing_03",
+          "outdoors_creaturehandler_healing_04"
+        ]
+      },
+      "branch_4": {
+        "links": [],
+        "skills": [
+          "outdoors_creaturehandler_support_01",
+          "outdoors_creaturehandler_support_02",
+          "outdoors_creaturehandler_support_03",
+          "outdoors_creaturehandler_support_04"
+        ]
+      },
+      "novice": "outdoors_creaturehandler_novice",
+      "novice_links": [
+        "outdoors_scout"
+      ]
+    }
+  },
+  "crafting_droidengineer": {
+    "id": "crafting_droidengineer",
+    "displayName": "Crafting Droidengineer",
+    "category": "unknown",
+    "skillTree": {
+      "master_links": [],
+      "master": "crafting_droidengineer_master",
+      "branch_1": {
+        "links": [],
+        "skills": [
+          "crafting_droidengineer_production_01",
+          "crafting_droidengineer_production_02",
+          "crafting_droidengineer_production_03",
+          "crafting_droidengineer_production_04"
+        ]
+      },
+      "branch_2": {
+        "links": [],
+        "skills": [
+          "crafting_droidengineer_techniques_01",
+          "crafting_droidengineer_techniques_02",
+          "crafting_droidengineer_techniques_03",
+          "crafting_droidengineer_techniques_04"
+        ]
+      },
+      "branch_3": {
+        "links": [],
+        "skills": [
+          "crafting_droidengineer_refinement_01",
+          "crafting_droidengineer_refinement_02",
+          "crafting_droidengineer_refinement_03",
+          "crafting_droidengineer_refinement_04"
+        ]
+      },
+      "branch_4": {
+        "links": [],
+        "skills": [
+          "crafting_droidengineer_blueprints_01",
+          "crafting_droidengineer_blueprints_02",
+          "crafting_droidengineer_blueprints_03",
+          "crafting_droidengineer_blueprints_04"
+        ]
+      },
+      "novice": "crafting_droidengineer_novice",
+      "novice_links": [
+        "crafting_artisan"
+      ]
+    }
+  },
+  "combat_bountyhunter": {
+    "id": "combat_bountyhunter",
+    "displayName": "Combat Bountyhunter",
+    "category": "unknown",
+    "skillTree": {
+      "master_links": [],
+      "master": "combat_bountyhunter_master",
+      "branch_1": {
+        "links": [],
+        "skills": [
+          "combat_bountyhunter_investigation_01",
+          "combat_bountyhunter_investigation_02",
+          "combat_bountyhunter_investigation_03",
+          "combat_bountyhunter_investigation_04"
+        ]
+      },
+      "branch_2": {
+        "links": [],
+        "skills": [
+          "combat_bountyhunter_droidcontrol_01",
+          "combat_bountyhunter_droidcontrol_02",
+          "combat_bountyhunter_droidcontrol_03",
+          "combat_bountyhunter_droidcontrol_04"
+        ]
+      },
+      "branch_3": {
+        "links": [],
+        "skills": [
+          "combat_bountyhunter_droidresponse_01",
+          "combat_bountyhunter_droidresponse_02",
+          "combat_bountyhunter_droidresponse_03",
+          "combat_bountyhunter_droidresponse_04"
+        ]
+      },
+      "branch_4": {
+        "links": [],
+        "skills": [
+          "combat_bountyhunter_support_01",
+          "combat_bountyhunter_support_02",
+          "combat_bountyhunter_support_03",
+          "combat_bountyhunter_support_04"
+        ]
+      },
+      "novice": "combat_bountyhunter_novice",
+      "novice_links": [
+        "combat_marksman",
+        "outdoors_scout"
+      ]
+    }
+  },
+  "social_imagedesigner": {
+    "id": "social_imagedesigner",
+    "displayName": "Social Imagedesigner",
+    "category": "unknown",
+    "skillTree": {
+      "master_links": [],
+      "master": "social_imagedesigner_master",
+      "branch_1": {
+        "links": [],
+        "skills": [
+          "social_imagedesigner_hairstyle_01",
+          "social_imagedesigner_hairstyle_02",
+          "social_imagedesigner_hairstyle_03",
+          "social_imagedesigner_hairstyle_04"
+        ]
+      },
+      "branch_2": {
+        "links": [],
+        "skills": [
+          "social_imagedesigner_exotic_01",
+          "social_imagedesigner_exotic_02",
+          "social_imagedesigner_exotic_03",
+          "social_imagedesigner_exotic_04"
+        ]
+      },
+      "branch_3": {
+        "links": [],
+        "skills": [
+          "social_imagedesigner_bodyform_01",
+          "social_imagedesigner_bodyform_02",
+          "social_imagedesigner_bodyform_03",
+          "social_imagedesigner_bodyform_04"
+        ]
+      },
+      "branch_4": {
+        "links": [],
+        "skills": [
+          "social_imagedesigner_markings_01",
+          "social_imagedesigner_markings_02",
+          "social_imagedesigner_markings_03",
+          "social_imagedesigner_markings_04"
+        ]
+      },
+      "novice": "social_imagedesigner_novice",
+      "novice_links": [
+        "social_entertainer"
+      ]
+    }
+  },
+  "outdoors_squadleader": {
+    "id": "outdoors_squadleader",
+    "displayName": "Outdoors Squadleader",
+    "category": "unknown",
+    "skillTree": {
+      "master_links": [],
+      "master": "outdoors_squadleader_master",
+      "branch_1": {
+        "links": [],
+        "skills": [
+          "outdoors_squadleader_movement_01",
+          "outdoors_squadleader_movement_02",
+          "outdoors_squadleader_movement_03",
+          "outdoors_squadleader_movement_04"
+        ]
+      },
+      "branch_2": {
+        "links": [],
+        "skills": [
+          "outdoors_squadleader_offense_01",
+          "outdoors_squadleader_offense_02",
+          "outdoors_squadleader_offense_03",
+          "outdoors_squadleader_offense_04"
+        ]
+      },
+      "branch_3": {
+        "links": [],
+        "skills": [
+          "outdoors_squadleader_defense_01",
+          "outdoors_squadleader_defense_02",
+          "outdoors_squadleader_defense_03",
+          "outdoors_squadleader_defense_04"
+        ]
+      },
+      "branch_4": {
+        "links": [],
+        "skills": [
+          "outdoors_squadleader_support_01",
+          "outdoors_squadleader_support_02",
+          "outdoors_squadleader_support_03",
+          "outdoors_squadleader_support_04"
+        ]
+      },
+      "novice": "outdoors_squadleader_novice",
+      "novice_links": [
+        "outdoors_scout",
+        "combat_marksman"
+      ]
+    }
+  },
+  "force_discipline_enhancements": {
+    "id": "force_discipline_enhancements",
+    "displayName": "Force Discipline Enhancements",
+    "category": "unknown",
+    "skillTree": {
+      "master_links": [],
+      "master": "force_discipline_enhancements_master",
+      "branch_1": {
+        "links": [],
+        "skills": [
+          "force_discipline_enhancements_movement_01",
+          "force_discipline_enhancements_movement_02",
+          "force_discipline_enhancements_movement_03",
+          "force_discipline_enhancements_movement_04"
+        ]
+      },
+      "branch_2": {
+        "links": [],
+        "skills": [
+          "force_discipline_enhancements_protection_01",
+          "force_discipline_enhancements_protection_02",
+          "force_discipline_enhancements_protection_03",
+          "force_discipline_enhancements_protection_04"
+        ]
+      },
+      "branch_3": {
+        "links": [],
+        "skills": [
+          "force_discipline_enhancements_resistance_01",
+          "force_discipline_enhancements_resistance_02",
+          "force_discipline_enhancements_resistance_03",
+          "force_discipline_enhancements_resistance_04"
+        ]
+      },
+      "branch_4": {
+        "links": [],
+        "skills": [
+          "force_discipline_enhancements_synergy_01",
+          "force_discipline_enhancements_synergy_02",
+          "force_discipline_enhancements_synergy_03",
+          "force_discipline_enhancements_synergy_04"
+        ]
+      },
+      "novice": "force_discipline_enhancements_novice",
+      "novice_links": []
+    }
+  }
+}

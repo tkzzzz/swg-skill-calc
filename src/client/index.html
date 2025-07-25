@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SWG Skill Calculator - API Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #fff;
+        }
+        h1 {
+            color: #ffff00;
+        }
+        .test-section {
+            background: #2a2a2a;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        button {
+            background: #397373;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+        button:hover {
+            background: #4a8a8a;
+        }
+        pre {
+            background: #333;
+            padding: 10px;
+            overflow: auto;
+            border-radius: 3px;
+        }
+        .status {
+            padding: 5px 10px;
+            border-radius: 3px;
+            display: inline-block;
+            margin: 5px 0;
+        }
+        .status.success { background: #4caf50; }
+        .status.error { background: #f44336; }
+    </style>
+</head>
+<body>
+    <h1>🚀 SWG Skill Calculator - API Test Page</h1>
+    
+    <div class="test-section">
+        <h2>Server Status</h2>
+        <button onclick="testHealth()">Test Health Check</button>
+        <button onclick="testStats()">Get Stats</button>
+        <div id="status-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test API Endpoints</h2>
+        <button onclick="testEndpoint('/api/professions')">Get All Professions</button>
+        <button onclick="testEndpoint('/api/professions?category=basic')">Get Basic Professions</button>
+        <button onclick="testEndpoint('/api/skills?search=master')">Search Skills for "master"</button>
+        <button onclick="testEndpoint('/api/species')">Get All Species</button>
+        <button onclick="testEndpoint('/api/config')">Get Server Config</button>
+        <div id="api-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Search Test</h2>
+        <input type="text" id="search-input" placeholder="Search for anything..." style="padding: 5px;">
+        <button onclick="testSearch()">Search</button>
+        <div id="search-result"></div>
+    </div>
+
+    <script>
+        // Test health endpoint
+        async function testHealth() {
+            try {
+                const response = await fetch('/health');
+                const data = await response.json();
+                document.getElementById('status-result').innerHTML = `
+                    <div class="status success">Server is ${data.status}</div>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                `;
+            } catch (error) {
+                document.getElementById('status-result').innerHTML = `
+                    <div class="status error">Error: ${error.message}</div>
+                `;
+            }
+        }
+
+        // Test stats endpoint
+        async function testStats() {
+            try {
+                const response = await fetch('/api/stats');
+                const data = await response.json();
+                document.getElementById('status-result').innerHTML = `
+                    <div class="status success">Stats loaded</div>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                `;
+            } catch (error) {
+                document.getElementById('status-result').innerHTML = `
+                    <div class="status error">Error: ${error.message}</div>
+                `;
+            }
+        }
+
+        // Test any endpoint
+        async function testEndpoint(endpoint) {
+            try {
+                const response = await fetch(endpoint);
+                const data = await response.json();
+                
+                // Show first 3 items if it's a list
+                let display = data;
+                if (data.data && typeof data.data === 'object') {
+                    const keys = Object.keys(data.data);
+                    if (keys.length > 3) {
+                        const preview = {};
+                        keys.slice(0, 3).forEach(key => {
+                            preview[key] = data.data[key];
+                        });
+                        display = {
+                            ...data,
+                            data: preview,
+                            note: `Showing first 3 of ${keys.length} items`
+                        };
+                    }
+                }
+                
+                document.getElementById('api-result').innerHTML = `
+                    <div class="status success">Success: ${endpoint}</div>
+                    <pre>${JSON.stringify(display, null, 2)}</pre>
+                `;
+            } catch (error) {
+                document.getElementById('api-result').innerHTML = `
+                    <div class="status error">Error: ${error.message}</div>
+                `;
+            }
+        }
+
+        // Test search
+        async function testSearch() {
+            const query = document.getElementById('search-input').value;
+            if (!query) return;
+            
+            try {
+                const response = await fetch(`/api/search?q=${encodeURIComponent(query)}`);
+                const data = await response.json();
+                document.getElementById('search-result').innerHTML = `
+                    <div class="status success">Found ${data.totalResults} results</div>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                `;
+            } catch (error) {
+                document.getElementById('search-result').innerHTML = `
+                    <div class="status error">Error: ${error.message}</div>
+                `;
+            }
+        }
+
+        // Test on page load
+        window.onload = () => {
+            testHealth();
+        };
+    </script>
+</body>
+</html>

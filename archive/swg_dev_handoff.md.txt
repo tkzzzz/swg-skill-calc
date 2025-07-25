@@ -1,0 +1,104 @@
+# SWG Skill Calculator - Development Handoff
+
+## 🎯 Project Overview
+We've built a **Star Wars Galaxies skill calculator** that replicates the classic Kodan's ProfCalc interface. The tool allows players to plan character builds by selecting skills across multiple professions.
+
+## ✅ Current Status - WORKING FEATURES
+
+### Core Functionality
+- **✅ File Upload**: Loads full CONSTANTS.js dataset (~15,000 lines, 9,400+ skills)
+- **✅ Classic Interface**: 3-column layout matching Kodan's ProfCalc exactly
+- **✅ Multi-Profession Support**: Select skills across multiple professions simultaneously
+- **✅ Skill Tree Visualization**: Hierarchical display (Master → 4x4 Branches → Novice)
+- **✅ Real-time Validation**: Prerequisites checking and skill point tracking
+- **✅ Accumulated Data**: Live display of Experience, Skill Mods, Abilities, Titles, Schematics
+- **✅ Save/Load/Export**: Build persistence and HTML export functionality
+- **✅ Visual Design**: Authentic SWG color scheme and styling
+
+### Data Integration
+- **✅ Full Dataset Support**: Works with complete SWG CONSTANTS.js files
+- **✅ Profession Mapping**: Converts display names to data keys (e.g., "Entertainer" → "social_entertainer")
+- **✅ Skill Point Economy**: 250-point budget with color-coded progress bar
+- **✅ Data Aggregation**: Combines stats across all selected skills
+
+## 🐛 PERSISTENT ISSUE - Numbers in Abilities
+
+### The Mystery
+**Problem**: Numbers "1, 2, 3, 4" appear in abilities list when clicking skill boxes
+- **Symptom**: Clicking 4 skill boxes adds exactly 1, 2, 3, 4 to abilities
+- **Pattern**: Appears to be position-based (1st box clicked = "1", 2nd = "2", etc.)
+
+### What We've Tried
+1. **Data Cleaning on Load**: Removes 1,2,3,4 from commands arrays
+2. **Runtime Filtering**: Multiple layers of filtering before display
+3. **Validation Functions**: Enhanced checks to block numbers
+4. **Debug Tools**: Extensive logging shows clean data
+
+### Key Findings
+- **Data appears clean**: Brawler profession shows NO numbers in skill commands
+- **Diagnostic shows 0 issues**: No professions have numeric skill IDs
+- **Numbers still appear**: Despite all filtering, they show in the UI
+- **Different professions**: Issue seen with Entertainer abilities while debugging Brawler
+
+### Hypothesis
+The numbers might be:
+1. Added by the UI dynamically (not from data)
+2. Coming from a different data source we haven't identified
+3. Related to the skill box position/level somehow
+4. A side effect of some other code we haven't found
+
+### Debug Commands for Next Developer
+```javascript
+// Check all skills for numbers in commands
+Object.entries(SKILLS).forEach(([skillId, skill]) => {
+    if (skill.commands) {
+        skill.commands.forEach(cmd => {
+            if (['1', '2', '3', '4'].includes(String(cmd).trim())) {
+                console.log(`Found "${cmd}" in ${skillId}:`, skill.commands);
+            }
+        });
+    }
+});
+
+// Check what's in selectedSkills Set
+console.log('Selected Skills:', Array.from(selectedSkills));
+
+// Check accumulated abilities before display
+// Look for the "Raw abilities in set:" log line
+```
+
+## 🚀 RECOMMENDED NEXT STEPS
+
+### Priority 1: Solve the Numbers Mystery
+1. **Add breakpoints** in Chrome DevTools:
+   - Set breakpoint in `updateAccumulatedData()` where abilities are added
+   - Step through to see exactly when/how numbers appear
+   
+2. **Check for hidden code**:
+   - Search entire HTML for "1", "2", "3", "4" strings
+   - Look for any array indices being added as content
+   
+3. **Test with minimal data**:
+   - Create a test CONSTANTS.js with only one profession
+   - See if issue persists with clean, minimal data
+
+### Priority 2: Alternative Approach
+If the numbers can't be found:
+1. **Nuclear option**: Filter them out at display time
+   ```javascript
+   cleanAbilities.forEach(ability => {
+       if (!['1', '2', '3', '4'].includes(ability)) {
+           html += `<div>${formatAbility(ability)}</div>`;
+       }
+   });
+   ```
+
+2. **Investigate the UI generation**:
+   - The numbers might be coming from the level parameter
+   - Check if `renderSkillBox(skillId, fallbackTitle, false, level)` is somehow adding level as ability
+
+### Priority 3: Enhanced Features
+Once the numbers issue is resolved:
+1. **Auto-prerequisite selection** (like original Kodan's)
+2. **Build templates**
+3. **Better mobile support**

@@ -1,0 +1,52 @@
+{
+  "bothan": {
+    "id": "bothan",
+    "displayName": "Bothan",
+    "description": "bothan species from Star Wars Galaxies"
+  },
+  "human": {
+    "id": "human",
+    "displayName": "Human",
+    "description": "human species from Star Wars Galaxies"
+  },
+  "ithorian": {
+    "id": "ithorian",
+    "displayName": "Ithorian",
+    "description": "ithorian species from Star Wars Galaxies"
+  },
+  "mon_calamari": {
+    "id": "mon_calamari",
+    "displayName": "Mon calamari",
+    "description": "mon_calamari species from Star Wars Galaxies"
+  },
+  "rodian": {
+    "id": "rodian",
+    "displayName": "Rodian",
+    "description": "rodian species from Star Wars Galaxies"
+  },
+  "sullustan": {
+    "id": "sullustan",
+    "displayName": "Sullustan",
+    "description": "sullustan species from Star Wars Galaxies"
+  },
+  "trandoshan": {
+    "id": "trandoshan",
+    "displayName": "Trandoshan",
+    "description": "trandoshan species from Star Wars Galaxies"
+  },
+  "twilek": {
+    "id": "twilek",
+    "displayName": "Twilek",
+    "description": "twilek species from Star Wars Galaxies"
+  },
+  "wookiee": {
+    "id": "wookiee",
+    "displayName": "Wookiee",
+    "description": "wookiee species from Star Wars Galaxies"
+  },
+  "zabrak": {
+    "id": "zabrak",
+    "displayName": "Zabrak",
+    "description": "zabrak species from Star Wars Galaxies"
+  }
+}

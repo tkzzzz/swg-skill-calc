@@ -1,0 +1,43 @@
+{
+  "name": "swg-skill-calculator",
+  "version": "2.0.0",
+  "description": "Customizable Star Wars Galaxies Skill Calculator supporting multiple server configurations",
+  "main": "src/server/app.js",
+  "scripts": {
+    "setup": "node scripts/extract-data.js",
+    "dev": "npm run dev:server",
+    "dev:server": "node src/server/app.js",
+    "dev:client": "npm run dev:server",
+    "build": "node scripts/build-production.js",
+    "build:static": "node scripts/build-static.js",
+    "start": "NODE_ENV=production node src/server/app.js",
+    "test": "echo \"Tests will be added in future sessions\" && exit 0"
+  },
+  "keywords": [
+    "star-wars-galaxies",
+    "swg",
+    "skill-calculator",
+    "gaming",
+    "character-planning"
+  ],
+  "author": "SWG Community",
+  "license": "MIT",
+  "dependencies": {
+    "fastify": "^4.24.3",
+    "@fastify/static": "^6.12.0",
+    "@fastify/cors": "^8.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/swg-skill-calc"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/swg-skill-calc/issues"
+  }
+}
