@@ -1,143 +1,203 @@
 # SWG Skill Calculator 🌟
 
-A web-based skill calculator for Star Wars Galaxies (SWG) that replicates the classic Kodan's ProfCalc interface. Plan your character builds across multiple professions with real-time validation and point tracking.
+A **customizable**, modern skill calculator for Star Wars Galaxies (SWG) that supports multiple server configurations. Built with a Node.js backend and clean architecture, it allows different SWG servers (Legends, Restoration, etc.) to easily customize skill points, professions, and game mechanics.
 
 ![SWG Skill Calculator Screenshot](docs/images/screenshot.png)
 
 ## Features ✨
 
-- **Classic Interface**: 3-column layout matching Kodan's ProfCalc
-- **Multi-Profession Support**: Select skills across multiple professions
-- **Real-time Validation**: Prerequisites checking and 250-point budget tracking
-- **Complete Data Support**: Works with full SWG CONSTANTS.js files (9,400+ skills)
-- **Build Persistence**: Save/load builds locally
-- **Export Functionality**: Generate HTML reports of your builds
-- **Accumulated Stats**: Live display of Experience, Skill Mods, Abilities, Titles, and Schematics
+- **Multi-Server Support**: Easy configuration for different SWG servers
+- **Modern Architecture**: RESTful API backend with JSON data storage
+- **Customizable Settings**: 
+  - Skill point limits (250, 300, etc.)
+  - Profession availability
+  - Experience rates
+  - Skill costs and modifications
+- **Classic Interface**: Professional UI matching Kodan's ProfCalc
+- **Complete Data**: All 767 skills and 52 professions from SWG
+- **Multiple Deployment Options**: Host online, run locally, or generate static files
+- **Real-time Validation**: Prerequisites and point budget tracking
+- **Build Management**: Save, load, and export character builds
 
 ## Quick Start 🚀
 
-### Option 1: Use GitHub Pages (Recommended)
-Visit: [https://[your-username].github.io/swg-skill-calculator](https://[your-username].github.io/swg-skill-calculator)
+### Option 1: Hosted Version (Recommended)
+```bash
+# Clone the repository
+git clone https://github.com/tkzzzz/swg-skill-calc.git
+cd swg-skill-calc
 
-### Option 2: Run Locally
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/[your-username]/swg-skill-calculator.git
-   cd swg-skill-calculator
-   ```
+# Install dependencies
+npm install
 
-2. Open `index.html` in your web browser
-   - No build process required!
-   - Works offline
+# Start the server
+npm start
 
-3. Load your `CONSTANTS.js` file using the "Load CONSTANTS.js" button
-
-## Usage Guide 📖
-
-### Basic Workflow
-1. **Load Data**: Click "Load CONSTANTS.js" and select your game data file
-2. **Select Profession**: Choose from Basic, Elite, Force Sensitive, or Jedi professions
-3. **Build Skills**: Click skills in the tree (prerequisites are enforced automatically)
-4. **Track Points**: Monitor your 250-point budget in the right panel
-5. **Save Build**: Use Save/Load buttons for build persistence
-6. **Export**: Generate HTML reports of your completed builds
-
-### Controls
-- **Reset**: Clear all selections and start fresh
-- **Save**: Store current build in browser localStorage
-- **Load**: Restore previously saved build
-- **Export**: Download build as HTML file
-- **Force Refresh**: Debug tool to refresh data display
-- **Debug Abilities**: Analyze ability data (development tool)
-
-## Data File Format 📄
-
-The calculator expects a `CONSTANTS.js` file with the following structure:
-
-```javascript
-export const PROFESSIONS = {
-    basic: ["Artisan", "Brawler", "Entertainer", ...],
-    elite: ["Architect", "Armorsmith", ...],
-    forceSensitive: ["Combat Prowess", ...],
-    jedi: ["Lightsaber", "Powers", ...]
-};
-
-export const ALL_PROFESSIONS = {
-    profession_key: {
-        master: "skill_id",
-        branch_1: { skills: [...], links: [...] },
-        branch_2: { skills: [...], links: [...] },
-        branch_3: { skills: [...], links: [...] },
-        branch_4: { skills: [...], links: [...] },
-        novice: "skill_id",
-        novice_links: [...]
-    }
-};
-
-export const SKILLS = {
-    skill_id: {
-        title: "Skill Name",
-        skillPoints: 5,
-        preReqs: ["prereq_skill_id"],
-        xp: { id: "type", cost: 1000 },
-        skillModifiers: { mod_name: value },
-        commands: ["ability1", "ability2"],
-        schematics: ["schematic1"]
-    }
-};
+# Open http://localhost:3000 in your browser
 ```
+
+### Option 2: Static Export (No Server Required)
+```bash
+npm run build:static
+# Opens a standalone HTML file that works offline
+```
+
+### Option 3: Deploy to Railway/Vercel
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template)
+
+Click the button above or see [deployment guide](docs/deployment.md)
+
+## Server Configuration 🔧
+
+### Customizing for Your Server
+
+Create a new configuration file in `data/server-configs/yourserver.json`:
+
+```json
+{
+  "serverName": "Your SWG Server",
+  "description": "Custom configuration for our server",
+  "settings": {
+    "maxSkillPoints": 300,
+    "experienceMultiplier": 1.5,
+    "enableAllProfessions": true
+  },
+  "skillOverrides": {
+    "science_medic_master": {
+      "skillPoints": 10
+    }
+  },
+  "professionOverrides": {
+    "disabledProfessions": ["jedi_defender"]
+  }
+}
+```
+
+Then access your configuration:
+- Hosted: `http://yoursite.com/?server=yourserver`
+- Local: `http://localhost:3000/?server=yourserver`
+
+### Available Configurations
+
+- **default**: Base SWG settings (250 skill points)
+- **legends**: SWG Legends configuration
+- **restoration**: SWG Restoration settings
+- **basilisk**: SWGEmu Basilisk settings
+
+## API Documentation 📡
+
+The calculator provides a RESTful API for integration:
+
+```bash
+# Get all professions
+GET /api/professions
+
+# Get skills for a profession
+GET /api/skills?profession=medic
+
+# Search across all data
+GET /api/search?q=master
+
+# Get server configuration
+GET /api/config
+
+# Switch server configuration
+POST /api/config/legends
+```
+
+See [API Documentation](docs/api.md) for full details.
 
 ## Development 🛠️
 
 ### Project Structure
 ```
-swg-skill-calculator/
-├── index.html          # Main application (single file)
-├── README.md           # Documentation
-├── LICENSE             # MIT License
-├── .gitignore          # Git ignore file
-├── docs/               # Documentation assets
-│   └── images/         # Screenshots
-├── data/               # Sample data files
-│   └── CONSTANTS.js    # Example data file
-└── archive/            # Previous versions
+swg-skill-calc/
+├── src/
+│   ├── server/              # Backend API (Node.js + Fastify)
+│   │   ├── routes/          # API endpoints
+│   │   ├── services/        # Business logic
+│   │   └── config/          # Server configuration
+│   ├── client/              # Frontend application
+│   │   ├── components/      # Web Components
+│   │   ├── styles/          # CSS files
+│   │   └── utils/           # Helper functions
+│   └── shared/              # Shared code
+├── data/
+│   ├── base-game/           # Core SWG data (JSON)
+│   │   ├── professions.json # 52 professions
+│   │   ├── skills.json      # 767 skills
+│   │   └── species.json     # 10 species
+│   └── server-configs/      # Server customizations
+├── scripts/                 # Build and utility scripts
+├── docs/                    # Documentation
+└── legacy/                  # Previous version (reference)
 ```
 
-### Key Functions
-- `loadDataFile()` - Parses CONSTANTS.js upload
-- `renderSkillTree()` - Displays profession skill tree
-- `toggleSkill()` - Handles skill selection/deselection
-- `updateAccumulatedData()` - Aggregates stats across selected skills
-- `isValidAbility()` - Filters malformed ability entries
+### Development Setup
+```bash
+# Install dependencies
+npm install
 
-### Known Issues 🐛
-- Some ability entries from CONSTANTS.js may contain malformed data
-- Title filtering needs refinement for skill-specific titles
+# Run development server
+npm run dev
 
-### Debugging
-Press F12 to open browser console and look for:
-- `=== ABILITIES DEBUG ===` messages
-- Skill data parsing information
-- Validation warnings
+# Run tests
+npm test
+
+# Build for production
+npm run build
+```
+
+### Key Technologies
+- **Backend**: Node.js, Fastify, JSON data storage
+- **Frontend**: Web Components, ES6+ JavaScript
+- **Styling**: CSS Grid, CSS Custom Properties
+- **Deployment**: Docker, Railway, Vercel compatible
+
+### Development Roadmap
+See [DEVELOPMENT-ROADMAP.md](DEVELOPMENT-ROADMAP.md) for the complete development plan across 6 sessions.
 
 ## Contributing 🤝
 
 We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
+### How to Add Your Server Configuration
+
+1. Fork this repository
+2. Create `data/server-configs/yourserver.json`
+3. Submit a pull request
+4. Your server config will be available to all users!
+
 ### Areas for Improvement
-- [ ] Auto-prerequisite selection (click Master → auto-select tree)
-- [ ] Build templates for common character types
-- [ ] Species stat bonuses integration
-- [ ] Mobile responsive improvements
-- [ ] Advanced search/filtering
-- [ ] Community build sharing
+- [ ] Complete UI matching the screenshot design
+- [ ] Auto-prerequisite selection
+- [ ] Build templates and sharing
+- [ ] Species stat integration
+- [ ] Mobile responsive design
+- [ ] Admin panel for live configuration
+- [ ] PostgreSQL support for larger deployments
+
+## Current Status 🚧
+
+**Completed (Sessions 1-2):**
+- ✅ Modern backend architecture
+- ✅ Data extraction from CONSTANTS.js
+- ✅ RESTful API with full data access
+- ✅ Server configuration system
+- ✅ Basic test interface
+
+**In Progress (Session 3+):**
+- 🔄 Professional UI implementation
+- 🔄 Web Components for skill trees
+- 🔄 Full calculator functionality
+- 🔄 Deployment automation
 
 ## Browser Support 🌐
 
 - Chrome/Edge (Recommended)
 - Firefox
 - Safari
-- No Internet Explorer support
+- Mobile browsers (responsive design coming)
 
 ## License 📜
 
@@ -151,10 +211,10 @@ This project is licensed under the MIT License - see [LICENSE](LICENSE) file for
 
 ## Links 🔗
 
-- [Live Demo](https://[your-username].github.io/swg-skill-calculator)
-- [Report Issues](https://github.com/[your-username]/swg-skill-calculator/issues)
-- [SWG Community Discord](https://discord.gg/swg)
+- [Repository](https://github.com/tkzzzz/swg-skill-calc)
+- [Report Issues](https://github.com/tkzzzz/swg-skill-calc/issues)
+- [Development Roadmap](DEVELOPMENT-ROADMAP.md)
 
 ---
 
-Made with ❤️ for the SWG community
+Made with ❤️ for the SWG community | 🤖 Developed with Claude Code assistance
